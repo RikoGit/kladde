@@ -1,0 +1,24 @@
+{
+  "name": "kladde",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RikoGit/kladde.git"
+  },
+  "author": "RikoGit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RikoGit/kladde/issues"
+  },
+  "homepage": "https://github.com/RikoGit/kladde#readme"
+}
