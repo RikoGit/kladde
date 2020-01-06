@@ -14,6 +14,6 @@ server.set('port', PORT);
 server.use('/', express.static(staticDir));
 
 server.listen(PORT, () => {
-  /* eslint-disable-next-line no-console */
-  console.log(`Start server on port ${PORT}.`);
+    /* eslint-disable-next-line no-console */
+    console.log(`Start server on port ${PORT}.`);
 });

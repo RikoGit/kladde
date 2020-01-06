@@ -1,40 +1,49 @@
 {
-  "name": "kladde",
-  "version": "0.1.0",
-  "description": "",
-  "main": "server.js",
-  "dependencies": {
-    "express": "^4.17.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  },
-  "devDependencies": {
-    "@typescript-eslint/parser": "^2.14.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "typescript": "^3.7.4"
-  },
-  "engines": {
-    "node": "13.x"
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/RikoGit/kladde.git"
-  },
-  "type": "module",
-  "author": "RikoGit",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/RikoGit/kladde/issues"
-  },
-  "homepage": "https://github.com/RikoGit/kladde#readme"
+    "name": "kladde",
+    "version": "0.1.0",
+    "description": "Some pet projects",
+    "dependencies": {
+        "express": "^4.17.1",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.7.7",
+        "@babel/preset-react": "^7.7.4",
+        "@typescript-eslint/parser": "^2.14.0",
+        "babel-loader": "^8.0.6",
+        "eslint": "^6.8.0",
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-config-prettier": "^6.9.0",
+        "eslint-plugin-import": "^2.19.1",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-react": "^7.17.0",
+        "eslint-plugin-react-hooks": "^1.7.0",
+        "prettier": "^1.19.1",
+        "typescript": "^3.7.4",
+        "webpack": "^5.0.0-beta.11",
+        "webpack-cli": "^4.0.0-beta.1"
+    },
+    "engines": {
+        "node": "13.x"
+    },
+    "private": true,
+    "scripts": {
+        "build": "webpack --config configs/webpack.config.js",
+        "lint": "eslint src",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node src/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RikoGit/kladde.git"
+    },
+    "type": "module",
+    "author": "RikoGit",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/RikoGit/kladde/issues"
+    },
+    "homepage": "https://github.com/RikoGit/kladde#readme"
 }
