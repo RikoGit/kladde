@@ -7,6 +7,7 @@ extends:
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
+parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures: { jsx: true }
   ecmaVersion: 2020
@@ -14,4 +15,3 @@ parserOptions:
 plugins:
 - react
 rules: {}
-settings: { react: { version: "16" } }
