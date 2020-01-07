@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url';
 import express from 'express';
 
 const rootDir = join(fileURLToPath(import.meta.url), '..', '..');
-
 const staticDir = join(rootDir, 'static');
 const PORT = process.env.PORT || 5000;
 const server = express();

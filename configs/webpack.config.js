@@ -2,6 +2,7 @@ const { join } = require('path');
 
 const rootDir = join(__dirname, '..');
 const staticDir = join(rootDir, 'static');
+const buildDir = join(staticDir, 'build');
 
 module.exports = {
     entry: './src/client.jsx',
@@ -19,6 +20,6 @@ module.exports = {
     },
     output: {
         filename: 'main.js',
-        path: staticDir,
+        path: buildDir,
     },
 };
