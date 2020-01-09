@@ -9,6 +9,7 @@ const buildDir = join(staticDir, 'build');
 
 module.exports = {
     entry: [...(isDev ? ['webpack-hot-middleware/client'] : []), './src/client.jsx'],
+    devtool: isDev ? 'inline-source-map' : undefined,
     mode: isDev ? 'development' : 'production',
     module: {
         rules: [
