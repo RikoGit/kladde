@@ -30,4 +30,9 @@ module.exports = {
         publicPath: '/',
     },
     plugins: [...(isDev ? [new HotModuleReplacementPlugin()] : [])],
+    resolve: {
+        alias: {
+            'react-dom': '@hot-loader/react-dom',
+        },
+    },
 };
