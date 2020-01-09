@@ -5,7 +5,8 @@
     "dependencies": {
         "express": "^4.17.1",
         "react": "^16.12.0",
-        "react-dom": "^16.12.0"
+        "react-dom": "^16.12.0",
+        "react-hot-loader": "^4.12.18"
     },
     "devDependencies": {
         "@babel/core": "^7.7.7",
@@ -20,23 +21,31 @@
         "eslint-plugin-prettier": "^3.1.2",
         "eslint-plugin-react": "^7.17.0",
         "eslint-plugin-react-hooks": "^2.3.0",
-        "husky": "^4.0.0",
-        "lint-staged": "^10.0.0-beta.14",
+        "husky": "^4.0.3",
+        "lint-staged": "^10.0.0-beta.15",
+        "npm-run-all": "^4.1.5",
         "prettier": "^1.19.1",
         "typescript": "^3.7.4",
         "webpack": "^5.0.0-beta.11",
-        "webpack-cli": "^4.0.0-beta.1"
+        "webpack-cli": "^4.0.0-beta.1",
+        "webpack-dev-middleware": "^3.7.2",
+        "webpack-hot-middleware": "^2.25.0"
     },
     "engines": {
         "node": "13.x"
     },
     "private": true,
     "scripts": {
-        "build": "webpack --config configs/webpack.config.js",
+        "build": "NODE_ENV=production webpack --config configs/webpack.config.js",
+        "clean:build": "rm -rf static/build",
+        "dev:client": "NODE_ENV=development webpack --watch --config configs/webpack.config.js",
+        "dev:server": "NODE_ENV=development node src/server.js",
         "lint": "eslint src",
-        "prebuild": "rm -rf static/build",
+        "prebuild": "npm run clean:build",
+        "predev:client": "npm run clean:build",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node src/server.js"
+        "start": "npm run build && node src/server.js",
+        "start:dev": "run-p dev:*"
     },
     "repository": {
         "type": "git",

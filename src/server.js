@@ -1,3 +1,4 @@
+import { createRequire } from 'module';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -11,6 +12,25 @@ const server = express();
 server.set('port', PORT);
 
 server.use('/', express.static(staticDir));
+
+if (process.env.NODE_ENV === 'development') {
+    const require = createRequire(import.meta.url);
+
+    const webpack = require('webpack');
+    const webpackDevMiddleware = require('webpack-dev-middleware');
+    const webpackHotMiddleware = require('webpack-hot-middleware');
+
+    const config = require('../configs/webpack.config.js');
+
+    const compiler = webpack(config);
+
+    server.use(
+        webpackDevMiddleware(compiler, {
+            publicPath: config.output.publicPath,
+        }),
+    );
+    server.use(webpackHotMiddleware(compiler));
+}
 
 server.listen(PORT, () => {
     /* eslint-disable-next-line no-console */

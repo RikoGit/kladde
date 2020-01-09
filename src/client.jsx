@@ -1,10 +1,7 @@
+import 'react-hot-loader';
 import React from 'react';
 import { render } from 'react-dom';
 
-const App = () => (
-    <>
-        <p>This is kladde!</p>
-    </>
-);
+import App from './App.jsx';
 
 render(<App />, document.getElementById('root'));

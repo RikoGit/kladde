@@ -1,3 +1,6 @@
+# Build
+static/build
+
 # Logs
 logs
 *.log

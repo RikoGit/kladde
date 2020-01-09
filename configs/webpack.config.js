@@ -1,12 +1,15 @@
 const { join } = require('path');
 
+const { HotModuleReplacementPlugin } = require('webpack');
+
+const isDev = process.env.NODE_ENV === 'development';
 const rootDir = join(__dirname, '..');
 const staticDir = join(rootDir, 'static');
 const buildDir = join(staticDir, 'build');
 
 module.exports = {
-    entry: './src/client.jsx',
-    mode: 'production',
+    entry: [...(isDev ? ['webpack-hot-middleware/client'] : []), './src/client.jsx'],
+    mode: isDev ? 'development' : 'production',
     module: {
         rules: [
             {
@@ -18,8 +21,13 @@ module.exports = {
             },
         ],
     },
+    optimization: {
+        noEmitOnErrors: true,
+    },
     output: {
         filename: 'main.js',
         path: buildDir,
+        publicPath: '/',
     },
+    plugins: [...(isDev ? [new HotModuleReplacementPlugin()] : [])],
 };
