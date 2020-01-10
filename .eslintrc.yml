@@ -16,3 +16,4 @@ plugins:
 rules:
     import/extensions: [error, ignorePackages]
     import/no-extraneous-dependencies: [error, { packageDir: '.' }]
+    react/prop-types: off
