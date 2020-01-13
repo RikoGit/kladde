@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import HelloWorld from './HelloWorld.jsx';
+import Foo from './Foo/index.jsx';
 
 const Test = () => (
     <div>
@@ -53,6 +54,7 @@ const App = () => (
         />
         <Header />
         <Main />
+        <Foo />
     </Router>
 );
 

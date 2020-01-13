@@ -1,0 +1,18 @@
+.root {
+    background: #999;
+    width: 400px;
+}
+
+.content {
+    color: green;
+}
+
+.bar {
+    border-radius: 4px;
+    border: 1px solid red;
+    width: 500px;
+}
+
+.baz {
+    height: 100px;
+}
