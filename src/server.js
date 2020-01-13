@@ -1,11 +1,14 @@
-import { createRequire } from 'module';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 
 import express from 'express';
 
+import routes from './routes.js';
+import withDevSever from './withDevServer.js';
+
 const rootDir = join(fileURLToPath(import.meta.url), '..', '..');
 const staticDir = join(rootDir, 'static');
+const indexFile = join(staticDir, 'index.html');
 const PORT = process.env.PORT || 5000;
 const server = express();
 
@@ -14,23 +17,18 @@ server.set('port', PORT);
 server.use('/', express.static(staticDir));
 
 if (process.env.NODE_ENV === 'development') {
-    const require = createRequire(import.meta.url);
-
-    const webpack = require('webpack');
-    const webpackDevMiddleware = require('webpack-dev-middleware');
-    const webpackHotMiddleware = require('webpack-hot-middleware');
-
-    const config = require('../configs/webpack.config.js');
-
-    const compiler = webpack(config);
-
-    server.use(
-        webpackDevMiddleware(compiler, {
-            publicPath: config.output.publicPath,
-        }),
-    );
-    server.use(webpackHotMiddleware(compiler));
+    withDevSever(server);
 }
+
+routes.forEach(route => {
+    server.get(`/${route}`, (req, res) => {
+        res.sendFile(indexFile);
+    });
+});
+
+server.use((req, res) => {
+    res.status(404).sendFile(indexFile);
+});
 
 server.listen(PORT, () => {
     /* eslint-disable-next-line no-console */

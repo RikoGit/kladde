@@ -1,0 +1,1 @@
+export default ['memoji', 'mult'];
