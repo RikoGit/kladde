@@ -1,8 +1,9 @@
 import { hot } from 'react-hot-loader/root.js';
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Mult from './Mult/index.jsx';
+import Memoji from './Memoji/index.jsx';
 
-import HelloWorld from './HelloWorld.jsx';
 import Foo from './Foo/index.jsx';
 
 const Test = () => (
@@ -11,47 +12,42 @@ const Test = () => (
     </div>
 );
 
-const Test2 = () => (
-    <div>
-        <p>Test2</p>
-    </div>
-);
-
 const Main = () => (
     <main>
         <Switch>
-            <Route path="/test2">
-                <Test2 />
+            <Route path="/memoji">
+                <Memoji />
             </Route>
-            <Route path="/" component={Test} />
+            <Route path="/mult">
+                <Mult />
+            </Route>
+            <Route path="/">
+                <Test />
+            </Route>
         </Switch>
     </main>
 );
 
 const Header = () => (
-    <div>
+    <header>
         <nav>
             <ul>
                 <li>
-                    <Link to="/">Index</Link>
+                    <Link to="/">Главная</Link>
                 </li>
                 <li>
-                    <Link to="/test2">Test2</Link>
+                    <Link to="/mult">Мультик</Link>
+                </li>
+                <li>
+                    <Link to="/memoji">Memoji</Link>
                 </li>
             </ul>
         </nav>
-    </div>
+    </header>
 );
 
 const App = () => (
     <Router>
-        <p>This is kladde!!!!!!!!!!!!</p>
-        <HelloWorld
-            name="foo"
-            nameString={`foo ${4}`}
-            number={3}
-            object={{ name: 'foo', number: 3 }}
-        />
         <Header />
         <Main />
         <Foo />
