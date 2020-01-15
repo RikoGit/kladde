@@ -109,17 +109,17 @@
     background: #fff;
 }
 
-.smoke-1 {
+.smoke1 {
     top: -25px;
     right: 44px;
     animation: smoke_move 2s infinite ease-out -1.4s;
 }
-.smoke-2 {
+.smoke2 {
     top: -25px;
     right: 42px;
     animation: smoke_move 2s infinite ease-out;
 }
-.smoke-3 {
+.smoke3 {
     top: -25px;
     right: 49px;
     animation: smoke_move 2s infinite ease-out -0.7s;
@@ -138,13 +138,13 @@
 
     animation: sun_move 20s linear infinite;
 }
-.sun-wrapper {
+.sunWrapper {
     position: absolute;
 
     width: 100%;
     height: 100%;
 
-    animation: sun-wrapper_move 100s linear infinite -78s;
+    animation: sunWrapper_move 100s linear infinite -78s;
     transform-origin: 50% 100%;
 }
 .sun div {
@@ -230,19 +230,19 @@
     width: 120px;
     height: 120px;
 }
-.cloud-1 {
+.cloud1 {
     top: 10px;
     animation: cloud1_move 70s linear infinite -35s;
 }
-.cloud-2 {
+.cloud2 {
     top: 50px;
     animation: cloud2_move 40s linear infinite -38s;
 }
-.cloud-3 {
+.cloud3 {
     top: 100px;
     animation: cloud3_move 30s linear infinite -25s;
 }
-.cloud-4 {
+.cloud4 {
     top: 170px;
     animation: cloud4_move 20s linear infinite -2s;
 }
@@ -326,7 +326,7 @@
         box-shadow: 0 -400px 300px -300px transparent inset;
     }
 }
-@keyframes sun-wrapper_move {
+@keyframes sunWrapper_move {
     to {
         transform: rotate(1turn);
     }

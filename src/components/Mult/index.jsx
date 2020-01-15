@@ -9,14 +9,14 @@ const Mult = () => (
             <div className={styles.sea} />
             <div className={styles.ship}>
                 <div className={styles.smoke}>
-                    <div className={cn({ [`${styles['smoke-1']}`]: true })} />
-                    <div className={cn({ [`${styles['smoke-2']}`]: true })} />
-                    <div className={cn({ [`${styles['smoke-3']}`]: true })} />
+                    <div className={styles.smoke1} />
+                    <div className={styles.smoke2} />
+                    <div className={styles.smoke3} />
                 </div>
                 <div className={styles.ship_smokestack} />
                 <div className={styles.ship_window} />
             </div>
-            <div className={cn({ [`${styles['sun-wrapper']}`]: true })}>
+            <div className={styles.sunWrapper}>
                 <div className={styles.sun}>
                     <div />
                     <div />
@@ -30,10 +30,10 @@ const Mult = () => (
                     <div />
                 </div>
             </div>
-            <div className={cn(styles.cloud, { [`${styles['cloud-1']}`]: true })} />
-            <div className={cn(styles.cloud, { [`${styles['cloud-2']}`]: true })} />
-            <div className={cn(styles.cloud, { [`${styles['cloud-3']}`]: true })} />
-            <div className={cn(styles.cloud, { [`${styles['cloud-4']}`]: true })} />
+            <div className={cn(styles.cloud, styles.cloud1)} />
+            <div className={cn(styles.cloud, styles.cloud2)} />
+            <div className={cn(styles.cloud, styles.cloud3)} />
+            <div className={cn(styles.cloud, styles.cloud4)} />
         </div>
     </div>
 );

@@ -1,1 +1,1 @@
-export default ['memoji', 'mult'];
+export default ['memoji', 'kittens', 'mult'];
