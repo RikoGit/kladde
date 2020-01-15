@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Mult from '../pages/Mult/index.jsx';
 import Harvest from '../pages/Harvest/index.jsx';
 import Kittens from '../pages/Kittens/index.jsx';
+import Form from '../pages/Form/index.jsx';
 import Memoji from '../pages/Memoji/index.jsx';
 
 const Test = () => (
@@ -17,6 +18,9 @@ const Main = () => (
         <Switch>
             <Route path="/memoji">
                 <Memoji />
+            </Route>
+            <Route path="/form">
+                <Form />
             </Route>
             <Route path="/kittens">
                 <Kittens />
@@ -49,6 +53,9 @@ const Header = () => (
                 </li>
                 <li>
                     <Link to="/kittens">Бабуленькины котятки</Link>
+                </li>
+                <li>
+                    <Link to="/form">Проверка формы</Link>
                 </li>
                 <li>
                     <Link to="/memoji">Memoji</Link>

@@ -6,7 +6,7 @@ import styles from './styles.css';
 const test = cn(styles.card, styles.card_state_close);
 
 const Memoji = () => (
-    <div>
+    <div className={styles.memojiBody}>
         <header>
             <h1 className={styles.title}>Memoji</h1>
         </header>

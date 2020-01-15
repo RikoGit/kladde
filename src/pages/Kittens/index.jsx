@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './styles.css';
 
 const Kittens = () => (
-    <div>
+    <div className={styles.kittensBody}>
         <header className={styles.header}>Бабуленькины котятки</header>
         <div className={styles.content}>
             <input
