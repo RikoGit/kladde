@@ -1,9 +1,10 @@
 import { hot } from 'react-hot-loader/root.js';
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Mult from './Mult/index.jsx';
-import Kittens from './Kittens/index.jsx';
-import Memoji from './Memoji/index.jsx';
+import Mult from '../pages/Mult/index.jsx';
+import Harvest from '../pages/Harvest/index.jsx';
+import Kittens from '../pages/Kittens/index.jsx';
+import Memoji from '../pages/Memoji/index.jsx';
 
 const Test = () => (
     <div>
@@ -19,6 +20,9 @@ const Main = () => (
             </Route>
             <Route path="/kittens">
                 <Kittens />
+            </Route>
+            <Route path="/harvest">
+                <Harvest />
             </Route>
             <Route path="/mult">
                 <Mult />
@@ -39,6 +43,9 @@ const Header = () => (
                 </li>
                 <li>
                     <Link to="/mult">Мультик</Link>
+                </li>
+                <li>
+                    <Link to="/harvest">Бабуленькин урожай</Link>
                 </li>
                 <li>
                     <Link to="/kittens">Бабуленькины котятки</Link>

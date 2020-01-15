@@ -34,22 +34,18 @@ const Kittens = () => (
             <div className={styles.column1}>
                 <ul className={styles.menu}>
                     <li className={cn(styles.menu__item, styles.menu__item_type_rg, styles.р)}>
-                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                         <label htmlFor="menu__radio3" className={styles.menu__label} />
                         Русская голубая
                     </li>
                     <li className={cn(styles.menu__item, styles.menu__item_type_siam, styles.с)}>
-                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                         <label htmlFor="menu__radio4" className={styles.menu__label} />
                         Сиамская
                     </li>
                     <li className={cn(styles.menu__item, styles.menu__item_type_abyss, styles.а)}>
-                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                         <label htmlFor="menu__radio1" className={styles.menu__label} />
                         Абиссинская
                     </li>
                     <li className={cn(styles.menu__item, styles.menu__item_type_brit, styles.б)}>
-                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                         <label htmlFor="menu__radio2" className={styles.menu__label} />
                         Британская
                     </li>
@@ -61,79 +57,79 @@ const Kittens = () => (
                         className={cn(styles.cards__item, styles.cards__item_type_rg)}
                         data-title="Dunloe Domokovitch"
                     >
-                        <img src="img/rg/5.jpg" alt="" />
+                        <img src="images/kittens/rg/5.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_siam)}
                         data-title="Сиамские кошки"
                     >
-                        <img src="img/siam/1.jpeg" alt="" />
+                        <img src="images/kittens/siam/1.jpeg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_rg)}
                         data-title="Иванович, 1911 год"
                     >
-                        <img src="img/rg/2.jpg" alt="" />
+                        <img src="images/kittens/rg/2.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_siam)}
                         data-title="Оливия_де_Хэвиленд_со_своей_сиамской_кошкой, 1949 год"
                     >
-                        <img src="img/siam/2.jpg" alt="" />
+                        <img src="images/kittens/siam/2.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_rg)}
                         data-title="Баярд, 1903 год"
                     >
-                        <img src="img/rg/1.jpg" alt="" />
+                        <img src="images/kittens/rg/1.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_abyss)}
                         data-title="Sedgemere Peaty, 1894 год"
                     >
-                        <img src="img/abyss/2.jpg" alt="" />
+                        <img src="images/kittens/abyss/2.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_brit)}
                         data-title="CHAMPION_BALLOCHMYLE_BROTHER_BUMP, 1902 г"
                     >
-                        <img src="img/brit/1.jpeg" alt="" />
+                        <img src="images/kittens/brit/1.jpeg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_rg)}
                         data-title="Ashbrittle Peter, 1902 год"
                     >
-                        <img src="img/rg/3.jpg" alt="" />
+                        <img src="images/kittens/rg/3.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_abyss)}
                         data-title="Абиссинская кошка"
                     >
-                        <img src="img/abyss/4.jpg" alt="" />
+                        <img src="images/kittens/abyss/4.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_abyss)}
                         data-title="Zula, 1868 год"
                     >
-                        <img src="img/abyss/1.jpg" alt="" />
+                        <img src="images/kittens/abyss/1.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_siam)}
                         data-title="New Boy, 1946 год"
                     >
-                        <img src="img/siam/3.jpg" alt="" />
+                        <img src="images/kittens/siam/3.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_rg)}
                         data-title="Krimsky of Coryton, 1936 год"
                     >
-                        <img src="img/rg/4.jpg" alt="" />
+                        <img src="images/kittens/rg/4.jpg" alt="" />
                     </li>
                     <li
                         className={cn(styles.cards__item, styles.cards__item_type_siam)}
                         data-title="Чесс, 1935 год"
                     >
-                        <img src="img/siam/6.jpg" alt="" />
+                        <img src="images/kittens/siam/6.jpg" alt="" />
                     </li>
                 </ul>
             </div>

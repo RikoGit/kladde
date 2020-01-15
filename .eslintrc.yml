@@ -17,15 +17,4 @@ rules:
     import/extensions: [error, ignorePackages]
     import/no-extraneous-dependencies: [error, { packageDir: '.' }]
     react/prop-types: off
-    jsx-a11y/label-has-associated-control:
-        - error
-        - required:
-              some:
-                  - nesting
-                  - id
-    jsx-a11y/label-has-for:
-        - error
-        - required:
-              some:
-                  - nesting
-                  - id
+    jsx-a11y/label-has-associated-control: off
