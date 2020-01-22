@@ -54,7 +54,7 @@
         "dev:client": "NODE_ENV=development webpack --watch --config configs/webpack.config.js",
         "dev:server": "NODE_ENV=development node src/server.js",
         "lint": "run-p lint:*",
-        "lint:css": "stylelint 'src/**/*.css'",
+        "lint:css": "stylelint 'static/**/*.css' 'src/**/*.css'",
         "lint:es": "eslint src",
         "prebuild": "npm run clean:build",
         "predev:client": "npm run clean:build",

@@ -1,26 +1,33 @@
 import { hot } from 'react-hot-loader/root.js';
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Index from '../pages/Index/index.jsx';
+import Todo from '../pages/Todo/index.jsx';
 import Mult from '../pages/Mult/index.jsx';
 import Harvest from '../pages/Harvest/index.jsx';
 import Kittens from '../pages/Kittens/index.jsx';
 import Form from '../pages/Form/index.jsx';
+import VanillaForm from '../pages/VanillaForm/index.jsx';
 import Memoji from '../pages/Memoji/index.jsx';
-
-const Test = () => (
-    <div>
-        <p>Test</p>
-    </div>
-);
+import VanillaMemoji from '../pages/VanillaMemoji/index.jsx';
 
 const Main = () => (
     <main>
         <Switch>
+            <Route path="/todo">
+                <Todo />
+            </Route>
             <Route path="/memoji">
                 <Memoji />
             </Route>
-            <Route path="/form">
+            <Route path="/vanillamemoji">
+                <VanillaMemoji />
+            </Route>
+            <Route path="/vanillaform">
                 <Form />
+            </Route>
+            <Route path="/form">
+                <VanillaForm />
             </Route>
             <Route path="/kittens">
                 <Kittens />
@@ -32,7 +39,7 @@ const Main = () => (
                 <Mult />
             </Route>
             <Route path="/">
-                <Test />
+                <Index />
             </Route>
         </Switch>
     </main>
@@ -55,10 +62,19 @@ const Header = () => (
                     <Link to="/kittens">Бабуленькины котятки</Link>
                 </li>
                 <li>
-                    <Link to="/form">Проверка формы</Link>
+                    <Link to="/vanillaform">Проверка формы</Link>
                 </li>
                 <li>
-                    <Link to="/memoji">Memoji</Link>
+                    <Link to="/form">Проверка формы (react)</Link>
+                </li>
+                <li>
+                    <Link to="/vanillamemoji">Memoji</Link>
+                </li>
+                <li>
+                    <Link to="/memoji">Memoji (react)</Link>
+                </li>
+                <li>
+                    <Link to="/todo">TODO</Link>
                 </li>
             </ul>
         </nav>
