@@ -1,34 +1,31 @@
 import React from 'react';
+import TodoList from './components/TodoList/index.jsx';
+
+import styles from './styles.css';
 
 const Todo = () => {
-    const firstName = 'Bob';
-    const lastName = 'Ziroll';
+    const style = {
+        fontSize: 20,
+    };
+    const hours = new Date().getHours();
+    let day;
+
+    if (hours >= 12 && hours < 18) {
+        day = 'afternoon';
+        style.color = 'green';
+    } else if (hours >= 18 && hours <= 23) {
+        day = 'evening';
+        style.color = 'blue';
+    } else {
+        day = 'morning';
+        style.color = 'yellow';
+    }
 
     return (
-        <div>
-            <h1>
-                Todo {firstName} {lastName}
-            </h1>
-            <form>
-                <ul>
-                    <li>
-                        <input type="checkbox" />
-                        <span>1</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" />
-                        <span>2</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" />
-                        <span>3</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" />
-                        <span>4</span>
-                    </li>
-                </ul>
-            </form>
+        <div className={styles.root}>
+            <h1>Todo</h1>
+            <p style={style}>Good {day}</p>
+            <TodoList />
         </div>
     );
 };

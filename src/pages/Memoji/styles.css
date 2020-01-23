@@ -1,4 +1,4 @@
-.memojiBody {
+.root {
     margin: 0 auto;
     padding: 0;
     min-width: 700px;
@@ -12,7 +12,7 @@
     background: #cfd0cf;
     color: #434344;
 }
-header {
+.header {
     grid-area: header;
 }
 .title {

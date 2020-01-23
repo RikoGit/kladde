@@ -6,8 +6,8 @@ import styles from './styles.css';
 const test = cn(styles.card, styles.card_state_close);
 
 const VanillaMemoji = () => (
-    <div className={styles.memojiBody}>
-        <header>
+    <div className={styles.root}>
+        <header className={styles.header}>
             <h1 className={styles.title}>Memoji</h1>
         </header>
         <div className={styles.content}>

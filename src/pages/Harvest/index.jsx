@@ -10,7 +10,6 @@ const Harvest = () => (
             name="harvest-radio"
             type="radio"
             className={cn(styles['harvest-radio'], styles['harvest-radio_type_1'])}
-            checked="checked"
         />
         <label htmlFor="harvest-radio__1" />
         <input
