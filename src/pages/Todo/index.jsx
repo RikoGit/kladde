@@ -1,6 +1,6 @@
 import React from 'react';
-import TodoList from './components/TodoList/index.jsx';
 
+import TodoList from './components/TodoList/index.jsx';
 import styles from './styles.css';
 
 const Todo = () => {

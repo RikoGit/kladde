@@ -5,7 +5,7 @@ import styles from './styles.css';
 
 const test = cn(styles.card, styles.card_state_close);
 
-const Memoji = () => (
+const MemojiList = () => (
     <div className={styles.root}>
         <header className={styles.header}>
             <h1 className={styles.title}>Memoji</h1>
@@ -89,4 +89,4 @@ const Memoji = () => (
     </div>
 );
 
-export default Memoji;
+export default MemojiList;

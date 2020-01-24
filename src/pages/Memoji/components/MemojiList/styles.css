@@ -110,6 +110,7 @@
 }
 .popup_state_open {
     display: flex;
+    top: 0;
 }
 .popup__main {
     margin: auto;

@@ -1,6 +1,7 @@
 import { hot } from 'react-hot-loader/root.js';
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 import Index from '../pages/Index/index.jsx';
 import Todo from '../pages/Todo/index.jsx';
 import Mult from '../pages/Mult/index.jsx';
@@ -8,8 +9,8 @@ import Harvest from '../pages/Harvest/index.jsx';
 import Kittens from '../pages/Kittens/index.jsx';
 import Form from '../pages/Form/index.jsx';
 import VanillaForm from '../pages/VanillaForm/index.jsx';
-import Memoji from '../pages/Memoji/index.jsx';
-import VanillaMemoji from '../pages/VanillaMemoji/index.jsx';
+import Memoji from '../pages/Memoji/Memoji/index.jsx';
+import VanillaMemoji from '../pages/Memoji/VanillaMemoji/index.jsx';
 
 const Main = () => (
     <main>
