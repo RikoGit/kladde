@@ -9,8 +9,8 @@ import Harvest from '../pages/Harvest/index.jsx';
 import Kittens from '../pages/Kittens/index.jsx';
 import Form from '../pages/Form/index.jsx';
 import VanillaForm from '../pages/VanillaForm/index.jsx';
-import Memoji from '../pages/Memoji/Memoji/index.jsx';
-import VanillaMemoji from '../pages/Memoji/VanillaMemoji/index.jsx';
+import Memoji from '../pages/Memoji/index.jsx';
+import VanillaMemoji from '../pages/VanillaMemoji/index.jsx';
 
 const Main = () => (
     <main>

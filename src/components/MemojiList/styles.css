@@ -1,0 +1,24 @@
+.root {
+    margin: 0 auto;
+    padding: 0;
+    min-width: 700px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        'header'
+        'content';
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #cfd0cf;
+    color: #434344;
+}
+.header {
+    grid-area: header;
+}
+.title {
+    margin: 0;
+    padding: 40px;
+    line-height: 47px;
+    font-size: 42px;
+    text-align: center;
+}
