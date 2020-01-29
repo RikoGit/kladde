@@ -1,15 +1,15 @@
 import React from 'react';
 
-import Cards from './components/Cards/index.jsx';
+import Game from './components/Game/index.jsx';
 import styles from './styles.css';
 
-const MemojiList = () => (
+const MemojiContent = () => (
     <div className={styles.root}>
         <header className={styles.header}>
             <h1 className={styles.title}>Memoji</h1>
         </header>
-        <Cards />
+        <Game />
     </div>
 );
 
-export default MemojiList;
+export default MemojiContent;

@@ -1,4 +1,5 @@
 export default [
+    'joke',
     'todo',
     'memoji',
     'vanillamemoji',

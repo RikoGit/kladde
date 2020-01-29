@@ -1,15 +1,15 @@
 import React from 'react';
 
-import MemojiList from '../../components/MemojiList/index.jsx';
-import jstest from './script.js';
+import MemojiContent from '../../components/MemojiContent/index.jsx';
+import init from '../../components/MemojiContent/components/Game/script.js';
 
 class VanillaMemoji extends React.Component {
     componentDidMount() {
-        jstest();
+        init();
     }
 
     render() {
-        return <MemojiList />;
+        return <MemojiContent />;
     }
 }
 export default VanillaMemoji;

@@ -4,7 +4,7 @@ import Card from '../Card/script.js';
 import commonStyles from '../../commonStyles.css';
 import styles from './styles.css';
 
-const inittest = () => {
+const init = () => {
     function getGridTemplateAreas(indices, number, separator = "'") {
         return indices.reduce((str, indicesItem, index) => {
             if (!(index % number)) {
@@ -185,4 +185,4 @@ const inittest = () => {
     });
 };
 
-export default inittest;
+export default init;

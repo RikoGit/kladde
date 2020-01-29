@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MemojiList from '../../components/MemojiList/index.jsx';
+import MemojiContent from '../../components/MemojiContent/index.jsx';
 
-const Memoji = () => <MemojiList />;
+const Memoji = () => <MemojiContent />;
 
 export default Memoji;

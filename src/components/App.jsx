@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Index from '../pages/Index/index.jsx';
+import Joke from '../pages/Joke/index.jsx';
 import Todo from '../pages/Todo/index.jsx';
 import Mult from '../pages/Mult/index.jsx';
 import Harvest from '../pages/Harvest/index.jsx';
@@ -15,6 +16,9 @@ import VanillaMemoji from '../pages/VanillaMemoji/index.jsx';
 const Main = () => (
     <main>
         <Switch>
+            <Route path="/joke">
+                <Joke />
+            </Route>
             <Route path="/todo">
                 <Todo />
             </Route>
@@ -24,10 +28,10 @@ const Main = () => (
             <Route path="/vanillamemoji">
                 <VanillaMemoji />
             </Route>
-            <Route path="/vanillaform">
+            <Route path="/form">
                 <Form />
             </Route>
-            <Route path="/form">
+            <Route path="/vanillaform">
                 <VanillaForm />
             </Route>
             <Route path="/kittens">
@@ -76,6 +80,9 @@ const Header = () => (
                 </li>
                 <li>
                     <Link to="/todo">TODO</Link>
+                </li>
+                <li>
+                    <Link to="/joke">Joke</Link>
                 </li>
             </ul>
         </nav>
