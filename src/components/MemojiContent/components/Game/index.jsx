@@ -3,7 +3,7 @@ import React from 'react';
 
 import Card from '../Card/index.jsx';
 import commonStyles from '../../commonStyles.css';
-import gameData from '../../gameData.js';
+import gameData from './gameData.js';
 import styles from './styles.css';
 
 const test = cn(commonStyles.card, commonStyles.card_state_close);

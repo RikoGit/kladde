@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './styles.css';
 
-const TodoItem = () => (
+const TodoItem = ({ todo }) => (
     <div className={styles.root}>
-        <input type="checkbox" />
-        <span>1</span>
+        <input type="checkbox" checked={todo.completed} />
+        <span>{todo.text}</span>
     </div>
 );
 

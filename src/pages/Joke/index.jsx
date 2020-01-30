@@ -1,23 +1,31 @@
 import React from 'react';
 
-import JokeItem from './components/JokeItem/index.jsx';
-import jokeData from './jokeData.js';
+function handleClick() {
+    // eslint-disable-next-line no-console
+    console.log('I was clicked');
+}
 
-const Joke = () => {
-    const jokeItem = jokeData
-        .filter(joke => joke.question && joke.punchLine)
-        .map(joke => (
-            <li key={joke.id}>
-                <JokeItem
-                    data={{
-                        question: joke.question,
-                        punchLine: joke.punchLine,
-                    }}
-                />
-            </li>
-        ));
+function handleMouseOver() {
+    // eslint-disable-next-line no-console
+    console.log('Hovered!');
+}
 
-    return <ul>{jokeItem}</ul>;
-};
+function Joke() {
+    return (
+        <div>
+            <img
+                src="https://www.fillmurray.com/200/100"
+                alt=""
+                onMouseOver={handleMouseOver()}
+                onFocus={handleMouseOver()}
+            />
+            <br />
+            <br />
+            <button type="submit" onClick={handleClick}>
+                Click me
+            </button>
+        </div>
+    );
+}
 
 export default Joke;
