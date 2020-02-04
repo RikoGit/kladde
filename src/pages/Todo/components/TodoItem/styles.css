@@ -1,3 +1,22 @@
 .root {
+    margin: 0;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+.text {
     color: #333;
+    font-size: 18px;
+}
+.root_state_close {
+    background: lightgray;
+}
+.root_state_close .text {
+    color: lightblue;
+}
+.root_state_open {
+    background: lightslategray;
+}
+.root_state_open .text {
+    color: bisque;
 }

@@ -27,6 +27,21 @@ class TodoList extends Component {
         });
     }
 
+    /*
+    const todoIndex = todos.findIndex(({id}) => id === itemId);
+
+    if (todoIndex === -1) return;
+    
+    const todo = todos[todoIndex];
+    const newTodo = {
+       ...todo,
+       completed: !todo.completed,
+    };
+    const todos = [...todos.slice(0, findIndex), newTodo, todos.slice(todoIndex + 1);
+    
+    return {todos};
+    */
+
     render() {
         const { todos } = this.state;
         const todosItems = todos.map(todo => (
