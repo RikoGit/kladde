@@ -1,37 +1,96 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Joke extends Component {
-    constructor() {
-        super();
-        this.state = {
-            isLogged: true,
-        };
-        this.handleClick = this.handleClick.bind(this);
-    }
+const Joke = () => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [age, setAge] = useState('');
+    const [gender, setGender] = useState('');
+    const [destination, setDestination] = useState('');
 
-    handleClick() {
-        this.setState(prevState => ({
-            isLogged: !prevState.isLogged,
-        }));
-    }
+    const f = {
+        firstName: setFirstName,
+        lastName: setLastName,
+        age: setAge,
+        gender: setGender,
+        destination: setDestination,
+    };
 
-    render() {
-        const { isLogged } = this.state;
-        const text = isLogged ? 'Logged in' : 'Logged out';
-        const buttonText = isLogged ? 'LOG OUT' : 'LOG IN';
+    const test = (a, b) => {
+        f[a](b);
+    };
 
-        return (
-            <div>
-                <h1>{text}</h1>
-                <h3>Кнопка button</h3>
-                <button type="button" onClick={this.handleClick}>
-                    {buttonText}
-                </button>
-                <h3>Кнопка input</h3>
-                <input type="button" onClick={this.handleClick} value={buttonText} />
-            </div>
-        );
-    }
-}
+    const handleChange = event => {
+        const { name, value } = event.target;
+
+        test(name, value);
+        // setFirstName(value);
+    };
+
+    return (
+        <main>
+            <form>
+                <input
+                    name="firstName"
+                    placeholder="First Name"
+                    onChange={handleChange}
+                    value={firstName}
+                />
+                <br />
+                <input
+                    name="lastName"
+                    placeholder="Last Name"
+                    onChange={handleChange}
+                    value={lastName}
+                />
+                <br />
+                <input name="age" placeholder="Age" onChange={handleChange} value={age} />
+                <br />
+                <label>
+                    <input
+                        name="gender"
+                        type="radio"
+                        value="male"
+                        onChange={handleChange}
+                        checked={gender === 'male'}
+                    />
+                    male
+                </label>
+                <label>
+                    <input
+                        name="gender"
+                        type="radio"
+                        value="female"
+                        onChange={handleChange}
+                        checked={gender === 'female'}
+                    />
+                    female
+                </label>
+                <br />
+
+                {/* Здесь создайте поле со списком для выбора пункта назначения */}
+                <br />
+
+                {/* Здесь создайте флажки для указания диетологических ограничений */}
+                <br />
+
+                <button type="submit">Submit</button>
+            </form>
+            <hr />
+            <h2>
+                <font color="#3AC1EF">Entered information:</font>
+            </h2>
+            <p>
+                Your name: {firstName} {lastName}
+            </p>
+            <p>Your age: {age}</p>
+            <p>Your gender: {gender}</p>
+            <p>Your destination: {destination}</p>
+            <p>
+                Your dietary restrictions:
+                {/* Список диетологических ограничений */}
+            </p>
+        </main>
+    );
+};
 
 export default Joke;

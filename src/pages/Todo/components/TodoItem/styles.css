@@ -4,6 +4,9 @@
     border-bottom: 1px solid #ccc;
     cursor: pointer;
 }
+.root:focus {
+    outline: none;
+}
 .text {
     color: #333;
     font-size: 18px;
