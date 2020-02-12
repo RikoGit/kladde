@@ -7,59 +7,20 @@ const Joke = () => {
         age: '',
         gender: '',
         destination: '',
-        isOverweight: false,
-        isAlcohol: false,
-        isSmoking: false,
+        restrictions: {
+            isVegan: false,
+            isKosher: false,
+            isLactoseFree: false,
+        },
     });
 
     const handleChange = event => {
         const { name, value, type, checked } = event.target;
 
         if (type === 'checkbox') {
-            setForm({ ...form, [name]: checked });
+            setForm({ ...form, restrictions: { ...form.restrictions, [name]: checked } });
         } else setForm({ ...form, [name]: value });
     };
-
-    /*
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [age, setAge] = useState('');
-    const [gender, setGender] = useState('');
-    const [destination, setDestination] = useState('');
-    const [restrictions, setRestrictions] = useState({
-        isOverweight: false,
-        isAlcohol: false,
-        isSmoking: false,
-    });
-
-    const f = {
-        firstName: setFirstName,
-        lastName: setLastName,
-        age: setAge,
-        gender: setGender,
-        destination: setDestination,
-        restrictions: setRestrictions,
-    };
-
-    const test = (a, b) => {
-        f[a](b);
-    };
-
-    const handleChange = event => {
-        const { name, value, type, checked } = event.target;
-
-        test(name, value);
-    };
-    */
-    /*
-    const [form, setForm] = useState({ firstName: '', lastName: '' });
-
-    const handleChange = event => {
-        const { name, value } = event.target;
-
-        setForm({ ...form, [name]: value });
-    };
-    */
 
     return (
         <main>
@@ -110,27 +71,27 @@ const Joke = () => {
                 <br />
                 <label>
                     <input
-                        name="isOverweight"
+                        name="isVegan"
                         type="checkbox"
-                        checked={form.isOverweight}
+                        checked={form.restrictions.isVegan}
                         onChange={handleChange}
                     />
                     overweight
                 </label>
                 <label>
                     <input
-                        name="isAlcohol"
+                        name="isKosher"
                         type="checkbox"
-                        checked={form.isAlcohol}
+                        checked={form.restrictions.isKosher}
                         onChange={handleChange}
                     />
                     alcohol
                 </label>
                 <label>
                     <input
-                        name="isSmoking"
+                        name="isLactoseFree"
                         type="checkbox"
-                        checked={form.isSmoking}
+                        checked={form.restrictions.isLactoseFree}
                         onChange={handleChange}
                     />
                     smoking
@@ -153,9 +114,9 @@ const Joke = () => {
             {form.destination ? <p>Your destination: {form.destination}</p> : null}
             <p>
                 Your dietary restrictions: <br />
-                overweight: {form.isOverweight ? 'Yes' : 'No'} <br />
-                alcohol: {form.isAlcohol ? 'Yes' : 'No'} <br />
-                smoking: {form.isSmoking ? 'Yes' : 'No'}
+                overweight: {form.restrictions.isVegan ? 'Yes' : 'No'} <br />
+                alcohol: {form.restrictions.isKosher ? 'Yes' : 'No'} <br />
+                smoking: {form.restrictions.isLactoseFree ? 'Yes' : 'No'}
             </p>
         </main>
     );
