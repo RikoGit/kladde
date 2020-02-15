@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 
 import styles from './styles.css';
 
-const FormContent = () => {
-    const [profileName, setProfileName] = useState('');
-    const [profileAge, setProfileAge] = useState(0);
-    const [profilePhone, setProfilePhone] = useState('');
-    const [profileNumber, setProfileNumber] = useState(0);
+const FormContent = ({ isVanilla }) => {
+    const [form, setForm] = useState({
+        profileName: '',
+        profileAge: 0,
+        profilePhone: '',
+        profileNumber: 0,
+    });
 
     const { inputErrorClass, formValidClass, formInvalidClass } = {
         formClass: styles.form,
@@ -64,26 +66,13 @@ const FormContent = () => {
     };
 
     const validationForm = elem => {
-        /* кусок из курса из подсказок */
         if (elem.value) {
             // если поле заполнено
             validator(elem); // запускаем валидацию
-        } else if (elem.dataset.required === '') {
+        } else if (elem.dataset.required) {
             // если не заполнено и обязательное
             addErrorClass(elem); // подсвечиваем красным
         }
-        /* мой код с ошибкой 
-        if (elem.dataset.required === '') {
-            if (elem.value) {
-                removeErrorClass(elem);
-            } else {
-                addErrorClass(elem);
-                return;
-            }
-        }
-        if (elem.dataset.validator) {
-            validator(elem);
-        } */
     };
 
     const handleSubmit = event => {
@@ -93,9 +82,9 @@ const FormContent = () => {
         target.classList.remove(formInvalidClass);
         let isformValidClass = true;
         const inputs = target.querySelectorAll('input');
-        [].slice.call(inputs).map(item => {
-            validationForm(item);
-            if (item.classList.contains(inputErrorClass)) isformValidClass = false;
+        [].slice.call(inputs).map(input => {
+            validationForm(input);
+            if (input.classList.contains(inputErrorClass)) isformValidClass = false;
             return undefined;
         });
         if (isformValidClass) {
@@ -107,34 +96,24 @@ const FormContent = () => {
 
     const handleChange = event => {
         const { name, value } = event.target;
-        switch (name) {
-            case 'profileName': {
-                setProfileName(value);
-                break;
-            }
-            case 'profileAge': {
-                setProfileAge(value);
-                break;
-            }
-            case 'profilePhone': {
-                setProfilePhone(value);
-                break;
-            }
-            case 'profileNumber': {
-                setProfileNumber(value);
-                break;
-            }
-            default:
-        }
+        setForm({ ...form, [name]: value });
+    };
+
+    const handleBlur = event => {
+        const { target } = event.target;
+        validationForm(target);
+    };
+
+    const handleFocus = event => {
+        removeErrorClass(event.target); // ???
     };
 
     return (
         <section className={styles.profile}>
             <h1 className={styles.header}>Моя анкета</h1>
-            <form action="#" className={styles.form} onSubmit={handleSubmit}>
+            <form action="#" className={styles.form} onSubmit={!isVanilla ? handleSubmit : null}>
                 <p className={styles.form__success}>Форма заполнена правильно</p>
                 <p className={styles.form__error}>Форма содержит ошибки</p>
-
                 <label htmlFor="profileName" className={styles.form__label}>
                     Имя <span className={styles.required}>*</span>
                 </label>
@@ -144,11 +123,11 @@ const FormContent = () => {
                     data-required
                     data-validator="letters"
                     className={styles.form__input}
-                    onChange={handleChange}
+                    onBlur={!isVanilla ? handleBlur : null}
+                    onFocus={!isVanilla ? handleFocus : null}
+                    onChange={!isVanilla ? handleChange : null}
                 />
                 <span className={styles.form__comment}>Только буквы (русские или английские)</span>
-                {profileName}
-
                 <label htmlFor="profileAge" className={styles.form__label}>
                     Возраст
                 </label>
@@ -159,11 +138,11 @@ const FormContent = () => {
                     data-validator-min="0"
                     data-validator-max="100"
                     className={styles.form__input}
-                    onChange={handleChange}
+                    onBlur={!isVanilla ? handleBlur : null}
+                    onFocus={!isVanilla ? handleFocus : null}
+                    onChange={!isVanilla ? handleChange : null}
                 />
                 <span className={styles.form__comment}>Число от 0 до 100</span>
-                {profileAge}
-
                 <label htmlFor="profilePhone" className={styles.form__label}>
                     Телефон
                 </label>
@@ -173,11 +152,11 @@ const FormContent = () => {
                     data-validator="regexp"
                     data-validator-pattern="^\+7\d{10}$"
                     className={styles.form__input}
-                    onChange={handleChange}
+                    onBlur={!isVanilla ? handleBlur : null}
+                    onFocus={!isVanilla ? handleFocus : null}
+                    onChange={!isVanilla ? handleChange : null}
                 />
                 <span className={styles.form__comment}>В формате +71234567890</span>
-                {profilePhone}
-
                 <label htmlFor="profileNumber" className={styles.form__label}>
                     Любимое число
                 </label>
@@ -186,10 +165,10 @@ const FormContent = () => {
                     placeholder="42?"
                     data-validator="number"
                     className={styles.form__input}
-                    onChange={handleChange}
+                    onBlur={!isVanilla ? handleBlur : null}
+                    onFocus={!isVanilla ? handleFocus : null}
+                    onChange={!isVanilla ? handleChange : null}
                 />
-                {profileNumber}
-
                 <button type="submit" className={styles.form__button}>
                     Сохранить
                 </button>

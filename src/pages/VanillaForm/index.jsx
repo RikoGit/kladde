@@ -15,7 +15,7 @@ class VanillaForm extends React.Component {
     }
 
     render() {
-        return <FormContent />;
+        return <FormContent isVanilla />;
     }
 }
 

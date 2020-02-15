@@ -54,7 +54,7 @@ const validateForm = obj => {
         if (elem.value) {
             // если поле заполнено
             validator(elem); // запускаем валидацию
-        } else if (elem.dataset.required === '') {
+        } else if (elem.dataset.required) {
             // если не заполнено и обязательное
             addErrorClass(elem); // подсвечиваем красным
         }
