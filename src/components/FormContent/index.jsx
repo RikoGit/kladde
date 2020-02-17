@@ -100,18 +100,19 @@ const FormContent = ({ isVanilla }) => {
     };
 
     const handleBlur = event => {
-        const { target } = event.target;
+        const { target } = event;
         validationForm(target);
     };
 
     const handleFocus = event => {
-        removeErrorClass(event.target); // ???
+        const { target } = event;
+        removeErrorClass(target);
     };
 
     return (
         <section className={styles.profile}>
             <h1 className={styles.header}>Моя анкета</h1>
-            <form action="#" className={styles.form} onSubmit={!isVanilla ? handleSubmit : null}>
+            <form action="#" className={styles.form} onSubmit={isVanilla ? null : handleSubmit}>
                 <p className={styles.form__success}>Форма заполнена правильно</p>
                 <p className={styles.form__error}>Форма содержит ошибки</p>
                 <label htmlFor="profileName" className={styles.form__label}>
@@ -123,9 +124,9 @@ const FormContent = ({ isVanilla }) => {
                     data-required
                     data-validator="letters"
                     className={styles.form__input}
-                    onBlur={!isVanilla ? handleBlur : null}
-                    onFocus={!isVanilla ? handleFocus : null}
-                    onChange={!isVanilla ? handleChange : null}
+                    onBlur={isVanilla ? null : handleBlur}
+                    onFocus={isVanilla ? null : handleFocus}
+                    onChange={isVanilla ? null : handleChange}
                 />
                 <span className={styles.form__comment}>Только буквы (русские или английские)</span>
                 <label htmlFor="profileAge" className={styles.form__label}>
@@ -138,9 +139,9 @@ const FormContent = ({ isVanilla }) => {
                     data-validator-min="0"
                     data-validator-max="100"
                     className={styles.form__input}
-                    onBlur={!isVanilla ? handleBlur : null}
-                    onFocus={!isVanilla ? handleFocus : null}
-                    onChange={!isVanilla ? handleChange : null}
+                    onBlur={isVanilla ? null : handleBlur}
+                    onFocus={isVanilla ? null : handleFocus}
+                    onChange={isVanilla ? null : handleChange}
                 />
                 <span className={styles.form__comment}>Число от 0 до 100</span>
                 <label htmlFor="profilePhone" className={styles.form__label}>
@@ -152,9 +153,9 @@ const FormContent = ({ isVanilla }) => {
                     data-validator="regexp"
                     data-validator-pattern="^\+7\d{10}$"
                     className={styles.form__input}
-                    onBlur={!isVanilla ? handleBlur : null}
-                    onFocus={!isVanilla ? handleFocus : null}
-                    onChange={!isVanilla ? handleChange : null}
+                    onBlur={isVanilla ? null : handleBlur}
+                    onFocus={isVanilla ? null : handleFocus}
+                    onChange={isVanilla ? null : handleChange}
                 />
                 <span className={styles.form__comment}>В формате +71234567890</span>
                 <label htmlFor="profileNumber" className={styles.form__label}>
@@ -165,9 +166,9 @@ const FormContent = ({ isVanilla }) => {
                     placeholder="42?"
                     data-validator="number"
                     className={styles.form__input}
-                    onBlur={!isVanilla ? handleBlur : null}
-                    onFocus={!isVanilla ? handleFocus : null}
-                    onChange={!isVanilla ? handleChange : null}
+                    onBlur={isVanilla ? null : handleBlur}
+                    onFocus={isVanilla ? null : handleFocus}
+                    onChange={isVanilla ? null : handleChange}
                 />
                 <button type="submit" className={styles.form__button}>
                     Сохранить

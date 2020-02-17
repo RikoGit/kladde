@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Index from '../pages/Index/index.jsx';
-import Joke from '../pages/Joke/index.jsx';
+import MemeGenerator from '../pages/MemeGenerator/index.jsx';
 import Todo from '../pages/Todo/index.jsx';
 import Mult from '../pages/Mult/index.jsx';
 import Harvest from '../pages/Harvest/index.jsx';
@@ -16,8 +16,8 @@ import VanillaMemoji from '../pages/VanillaMemoji/index.jsx';
 const Main = () => (
     <main>
         <Switch>
-            <Route path="/joke">
-                <Joke />
+            <Route path="/memegenerator">
+                <MemeGenerator />
             </Route>
             <Route path="/todo">
                 <Todo />
@@ -82,7 +82,7 @@ const Header = () => (
                     <Link to="/todo">TODO</Link>
                 </li>
                 <li>
-                    <Link to="/joke">Joke</Link>
+                    <Link to="/memegenerator">Meme generator</Link>
                 </li>
             </ul>
         </nav>
