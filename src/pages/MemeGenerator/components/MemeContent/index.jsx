@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styles from '../../styles.css';
 
@@ -10,19 +10,26 @@ const MemeContent = () => {
         allMemeImgs: [],
     });
 
-    /* fetch('https://api.imgflip.com/get_memes')
-        .then(response => response.json())
-        .then(response => setForm({ ...form, allMemeImgs: response.data.memes }));
-    */
+    useEffect(() => {
+        fetch('https://api.imgflip.com/get_memes')
+            .then(response => response.json())
+            .then(response => setForm({ ...form, allMemeImgs: response.data.memes }));
+    }, []);
 
     const handleChange = event => {
         const { name, value } = event.target;
         setForm({ ...form, [name]: value });
     };
 
+    const handleSubmit = event => {
+        event.preventDefault();
+        const randomNumber = Math.floor(Math.random() * form.allMemeImgs.length);
+        setForm({ ...form, randomImg: form.allMemeImgs[randomNumber].url });
+    };
+
     return (
         <div>
-            <form className={styles.meme_form}>
+            <form className={styles.meme_form} onSubmit={handleSubmit}>
                 <input type="text" name="topText" placeholder="topText" onChange={handleChange} />
                 <input
                     type="text"
@@ -30,7 +37,7 @@ const MemeContent = () => {
                     placeholder="bottomText"
                     onChange={handleChange}
                 />
-                <button type="button">Gen</button>
+                <button type="submit">Gen</button>
                 <div className={styles.meme}>
                     <img align="center" src={form.randomImg} alt="" />
                     <h2 className={styles.top}>{form.topText}</h2>
