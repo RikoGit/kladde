@@ -11,6 +11,7 @@ import Kittens from '../pages/Kittens/index.jsx';
 import Form from '../pages/Form/index.jsx';
 import VanillaForm from '../pages/VanillaForm/index.jsx';
 import Memoji from '../pages/Memoji/index.jsx';
+import CommonModelMemoji from '../pages/CommonModelMemoji/index.jsx';
 import VanillaMemoji from '../pages/VanillaMemoji/index.jsx';
 
 const Main = () => (
@@ -24,6 +25,9 @@ const Main = () => (
             </Route>
             <Route path="/memoji">
                 <Memoji />
+            </Route>
+            <Route path="/commonmodelmemoji">
+                <CommonModelMemoji />
             </Route>
             <Route path="/vanillamemoji">
                 <VanillaMemoji />
@@ -74,6 +78,9 @@ const Header = () => (
                 </li>
                 <li>
                     <Link to="/vanillamemoji">Memoji</Link>
+                </li>
+                <li>
+                    <Link to="/commonmodelmemoji">Memoji (общая модель)</Link>
                 </li>
                 <li>
                     <Link to="/memoji">Memoji (react)</Link>

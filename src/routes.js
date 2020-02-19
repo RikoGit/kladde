@@ -1,5 +1,6 @@
 export default [
-    'joke',
+    'commonmodelmemoji',
+    'memegenerator',
     'todo',
     'memoji',
     'vanillamemoji',

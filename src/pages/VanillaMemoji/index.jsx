@@ -1,7 +1,8 @@
 import React from 'react';
 
-import MemojiContent from '../../components/MemojiContent/index.jsx';
-import init from '../../components/MemojiContent/components/Game/init.js';
+import init from './components/Game/init.js';
+import MemojiWrapper from '../../components/MemojiWrapper/index.jsx';
+import Game from './components/Game/index.jsx';
 
 class VanillaMemoji extends React.Component {
     componentDidMount() {
@@ -9,7 +10,12 @@ class VanillaMemoji extends React.Component {
     }
 
     render() {
-        return <MemojiContent />;
+        return (
+            <MemojiWrapper>
+                <Game />
+            </MemojiWrapper>
+        );
     }
 }
+
 export default VanillaMemoji;
