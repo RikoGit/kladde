@@ -2,6 +2,7 @@ import { hot } from 'react-hot-loader/root.js';
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
+import styles from '../../static/global.css';
 import Index from '../pages/Index/index.jsx';
 import MemeGenerator from '../pages/MemeGenerator/index.jsx';
 import Todo from '../pages/Todo/index.jsx';
@@ -15,7 +16,7 @@ import CommonModelMemoji from '../pages/CommonModelMemoji/index.jsx';
 import VanillaMemoji from '../pages/VanillaMemoji/index.jsx';
 
 const Main = () => (
-    <main>
+    <main className={styles.main}>
         <Switch>
             <Route path="/memegenerator">
                 <MemeGenerator />
@@ -54,52 +55,56 @@ const Main = () => (
     </main>
 );
 
-const Header = () => (
-    <header>
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">Главная</Link>
-                </li>
-                <li>
-                    <Link to="/mult">Мультик</Link>
-                </li>
-                <li>
-                    <Link to="/harvest">Бабуленькин урожай</Link>
-                </li>
-                <li>
-                    <Link to="/kittens">Бабуленькины котятки</Link>
-                </li>
-                <li>
-                    <Link to="/vanillaform">Проверка формы</Link>
-                </li>
-                <li>
-                    <Link to="/form">Проверка формы (react)</Link>
-                </li>
-                <li>
-                    <Link to="/vanillamemoji">Memoji</Link>
-                </li>
-                <li>
-                    <Link to="/commonmodelmemoji">Memoji (общая модель)</Link>
-                </li>
-                <li>
-                    <Link to="/memoji">Memoji (react)</Link>
-                </li>
-                <li>
-                    <Link to="/todo">TODO</Link>
-                </li>
-                <li>
-                    <Link to="/memegenerator">Meme generator</Link>
-                </li>
-            </ul>
-        </nav>
-    </header>
+const Nav = () => (
+    <nav className={styles.nav}>
+        <ul className={styles.nav__list}>
+            <li className={styles.nav__item}>
+                <Link to="/">Главная</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/mult">Мультик</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/harvest">Бабуленькин урожай</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/kittens">Бабуленькины котятки</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/vanillaform">Проверка формы</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/form">Проверка формы (react)</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/vanillamemoji">Memoji</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/commonmodelmemoji">Memoji (общая модель)</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/memoji">Memoji (react)</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/todo">TODO</Link>
+            </li>
+            <li className={styles.nav__item}>
+                <Link to="/memegenerator">Meme generator</Link>
+            </li>
+        </ul>
+    </nav>
 );
+
+const Header = () => <header>Title</header>;
 
 const App = () => (
     <Router>
-        <Header />
-        <Main />
+        <div className={styles.content}>
+            {/* ??? */}
+            <Header />
+            <Nav />
+            <Main />
+        </div>
     </Router>
 );
 

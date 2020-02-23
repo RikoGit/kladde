@@ -1,13 +1,14 @@
 import React from 'react';
 
 import cn from 'classnames';
-import styles from '../../styles.css';
+import styles from './styles.css';
+import commonStyles from '../../styles.css';
 
 const AnimatedWord = ({ word, isWin }) => (
-    <span className={cn(styles.text, isWin ? styles.textwin : styles.textloose)}>
+    <span className={cn(commonStyles.text, isWin ? commonStyles.textwin : commonStyles.textloose)}>
         {Array.from(word).map((letter, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <span className={styles.letter} key={`${letter}-${index}`}>
+            <span className={styles.popup__letter} key={`${letter}-${index}`}>
                 {letter}
             </span>
         ))}

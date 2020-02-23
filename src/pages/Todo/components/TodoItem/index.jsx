@@ -7,16 +7,15 @@ const TodoItem = ({ todo, handleChange }) => {
     const classState = todo.completed ? styles.root_state_close : styles.root_state_open;
 
     return (
-        <div
-            className={cn(styles.root, classState)}
-            onClick={() => handleChange(todo.id)}
-            onKeyDown={() => handleChange(todo.id)}
-            role="button"
-            tabIndex="0"
-        >
-            <input type="checkbox" value={todo.completed} />
+        <label className={cn(styles.root, classState)}>
+            <input
+                type="checkbox"
+                tabIndex="0"
+                checked={todo.completed}
+                onChange={() => handleChange(todo.id)}
+            />
             <span className={styles.text}>{todo.text}</span>
-        </div>
+        </label>
     );
 };
 
