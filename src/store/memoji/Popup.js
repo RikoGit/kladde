@@ -1,5 +1,3 @@
-import styles from './styles.css';
-
 class Popup {
     constructor({ onClick, parentNode = document.body }) {
         this.domElement = document.createElement('div');
@@ -70,23 +68,23 @@ class Popup {
     }
 
     static CLASSES = {
-        name: styles.popup,
-        main: styles.popup__main,
-        open: styles.popup_state_open,
+        name: 'popup',
+        main: 'popup__main',
+        open: 'popup_state_open',
         type: {
-            win: styles.popup_type_win,
-            lose: styles.popup_type_lose,
+            win: 'popup_type_win',
+            lose: 'popup_type_lose',
         },
-        title: styles.popup__title,
-        text: styles.popup__text,
-        textwin: styles.popup__text_type_win,
-        textlose: styles.popup__text_type_lose,
-        letter: styles.popup__letter,
-        button: styles.popup__button,
-        buttonid: styles.popup__button,
-        buttontext: styles.popup__buttontext,
-        buttontextwin: styles.popup__buttontext_type_win,
-        buttontextlose: styles.popup__buttontext_type_lose,
+        title: 'popup__title',
+        text: 'popup__text',
+        textwin: 'popup__text_type_win',
+        textlose: 'popup__text_type_lose',
+        letter: 'popup__letter',
+        button: 'popup__button',
+        buttonid: 'popup__button',
+        buttontext: 'popup__buttontext',
+        buttontextwin: 'popup__buttontext_type_win',
+        buttontextlose: 'popup__buttontext_type_lose',
     };
 }
 

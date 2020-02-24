@@ -95,13 +95,9 @@ const Nav = () => (
     </nav>
 );
 
-const Header = () => <header>Title</header>;
-
 const App = () => (
     <Router>
         <div className={styles.content}>
-            {/* ??? */}
-            <Header />
             <Nav />
             <Main />
         </div>

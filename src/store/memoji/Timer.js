@@ -1,5 +1,3 @@
-import styles from './styles.css';
-
 class Timer {
     constructor({ timeout, onTimerEnd, parentNode }) {
         this.domElement = document.createElement('div');
@@ -58,7 +56,7 @@ class Timer {
 }
 
 Timer.CLASSES = {
-    name: styles.root,
+    name: 'root',
 };
 
 export default Timer;
