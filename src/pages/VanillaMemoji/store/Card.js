@@ -1,4 +1,4 @@
-import commonStyles from '../../commonStyles.css';
+import commonStyles from '../styles.css';
 
 class Card {
     constructor({ domElement, type, index, state, gridArea = `card${index}` }) {
