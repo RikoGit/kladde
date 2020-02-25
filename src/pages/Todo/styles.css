@@ -1,5 +1,11 @@
 .root {
-    margin: auto;
+    display: flex;
+    min-height: 100%;
+    background: #efefef;
+    box-shadow: 5px 0px 10px -5px #ccc inset;
+}
+.content {
+    margin: 28px auto;
     padding: 30px;
     background: white;
     border: 1px solid #ccc;

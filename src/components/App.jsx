@@ -59,37 +59,59 @@ const Nav = () => (
     <nav className={styles.nav}>
         <ul className={styles.nav__list}>
             <li className={styles.nav__item}>
-                <Link to="/">Главная</Link>
+                <Link to="/" className={styles.nav__link}>
+                    Главная
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/mult">Мультик</Link>
+                <Link to="/mult" className={styles.nav__link}>
+                    Мультик
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/harvest">Бабуленькин урожай</Link>
+                <Link to="/harvest" className={styles.nav__link}>
+                    Бабуленькин урожай
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/kittens">Бабуленькины котятки</Link>
+                <Link to="/kittens" className={styles.nav__link}>
+                    Бабуленькины котятки
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/vanillaform">Проверка формы</Link>
+                <Link to="/vanillaform" className={styles.nav__link}>
+                    Проверка формы
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/form">Проверка формы (react)</Link>
+                <Link to="/form" className={styles.nav__link}>
+                    Проверка формы (react)
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/vanillamemoji">Memoji</Link>
+                <Link to="/vanillamemoji" className={styles.nav__link}>
+                    Memoji
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/commonmodelmemoji">Memoji (общая модель)</Link>
+                <Link to="/commonmodelmemoji" className={styles.nav__link}>
+                    Memoji (общая модель)
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/memoji">Memoji (react)</Link>
+                <Link to="/memoji" className={styles.nav__link}>
+                    Memoji (react)
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/todo">TODO</Link>
+                <Link to="/todo" className={styles.nav__link}>
+                    TODO
+                </Link>
             </li>
             <li className={styles.nav__item}>
-                <Link to="/memegenerator">Meme generator</Link>
+                <Link to="/memegenerator" className={styles.nav__link}>
+                    Meme generator
+                </Link>
             </li>
         </ul>
     </nav>

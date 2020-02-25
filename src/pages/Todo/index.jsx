@@ -23,9 +23,11 @@ const Todo = () => {
 
     return (
         <div className={styles.root}>
-            <h1>Todo</h1>
-            <p style={style}>Good {day}</p>
-            <TodoList />
+            <div className={styles.content}>
+                <h1>Todo</h1>
+                <p style={style}>Good {day}</p>
+                <TodoList />
+            </div>
         </div>
     );
 };

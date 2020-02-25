@@ -10,8 +10,10 @@
     justify-content: center;
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
-    background: #cfd0cf;
+    background: #e6efec;
+    box-shadow: 5px 0px 10px -5px #ccc inset;
     color: #434344;
+    min-height: 100%;
 }
 .header {
     grid-area: header;

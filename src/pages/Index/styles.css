@@ -1,5 +1,8 @@
 .root {
+    background: #e0fbe1;
     min-height: 100%;
-    background: #faeafb;
     box-shadow: 5px 0px 10px -5px #ccc inset;
+}
+.content {
+    padding: 28px 15px;
 }

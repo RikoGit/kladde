@@ -1,6 +1,11 @@
+.root {
+    min-height: 100%;
+    background: #f0fbe4;
+    box-shadow: 5px 0px 10px -5px #ccc inset;
+}
 .content {
     position: relative;
-    margin: 5%;
+    padding: 28px;
 }
 .harvest-list {
     margin: 0;
@@ -161,7 +166,7 @@
 }
 .harvest-radio {
     position: absolute;
-    top: 250px;
+    top: 278px;
     left: 50%;
 }
 .harvest-radio_type_1 {

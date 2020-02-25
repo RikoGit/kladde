@@ -1,9 +1,15 @@
+.root {
+    min-height: 100%;
+    background: azure;
+    box-shadow: 5px 0px 10px -5px #ccc inset;
+}
 .canvas {
     position: relative;
 
     width: 500px;
     height: 380px;
-    margin: 0;
+    margin: 0 auto;
+    padding-top: 28px;
 
     transition: 0.3s ease;
 
