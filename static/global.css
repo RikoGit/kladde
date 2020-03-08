@@ -11,27 +11,6 @@ body {
         'nav main';
     min-height: 100vh;
 }
-.main {
-    margin: 0;
-    grid-area: main;
-    grid-row-start: 1;
-}
 .header {
     grid-area: header;
-}
-.nav {
-    width: 250px;
-    grid-area: nav;
-    grid-row-start: 1;
-}
-.nav__list {
-    margin: 0;
-    padding: 25px 15px;
-    list-style-type: none;
-}
-.nav__item {
-    padding: 3px 20px;
-}
-.nav__link {
-    text-decoration: none;
 }

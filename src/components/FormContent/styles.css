@@ -57,6 +57,7 @@
 
     font-size: 1em;
     line-height: 2em;
+    cursor: pointer;
 }
 .required {
     color: #aa3e2f;

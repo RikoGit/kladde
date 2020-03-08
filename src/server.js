@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 routes.forEach(route => {
-    server.get(`/${route}`, (req, res) => {
+    server.get(`/${route.path}`, (req, res) => {
         res.sendFile(indexFile);
     });
 });

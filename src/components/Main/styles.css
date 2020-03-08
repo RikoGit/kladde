@@ -1,0 +1,5 @@
+.root {
+    margin: 0;
+    grid-area: main;
+    grid-row-start: 1;
+}
