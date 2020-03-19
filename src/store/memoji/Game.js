@@ -1,15 +1,11 @@
-import Popup from './Popup.js';
 import Timer from './Timer.js';
 import Card from './Card.js';
 
 class Game {
-    constructor({ cardsContainer, cardElements, width, timeout }) {
-        this.cardsContainer = cardsContainer;
-        this.width = width;
+    constructor({ cardElements, timeout }) {
         this.cards = cardElements.map(
             card =>
                 new Card({
-                    domElement: card,
                     type: card.dataset.type,
                     index: card.dataset.index,
                     state: 'close',
@@ -18,20 +14,10 @@ class Game {
         this.timer = new Timer({
             timeout,
             onTimerEnd: () => this.onTimerEnd(),
-            parentNode: cardsContainer.parentNode,
-        });
-        this.popup = new Popup({
-            onClick: () => this.onPopupClick(),
-            parentNode: cardsContainer.parentNode.parentNode,
         });
         this.state = '';
-        this.transition = 500;
-        this.gridAreas = [];
 
-        this.setTransition()
-            .setGridAreaCards()
-            .onClickCard()
-            .start();
+        this.onClickCard().start();
     }
 
     onClickCard() {
@@ -53,43 +39,16 @@ class Game {
         return this;
     }
 
-    setGridAreaCards() {
-        this.cards.forEach(card => {
-            card.setGridArea();
-            this.gridAreas.push(card.gridArea);
-        });
-
-        return this;
-    }
-
-    setTransition() {
-        const elem = document.createElement('style');
-        elem.innerText = `.${'card'} {transition: ${this.transition / 1000}s}`;
-        document.head.appendChild(elem);
-
-        return this;
-    }
-
     onTimerEnd() {
         this.state = 'lose';
         this.timer.stop();
-        this.popup.show(this.state);
+        // this.popup.show(this.state);
     }
 
     onPopupClick() {
-        this.popup.hide();
+        // this.popup.hide();
         this.timer.stop();
         this.restart();
-    }
-
-    sortCardsByRandom() {
-        // добавим style grid-template-areas cardsContainer
-        /*        this.cardsContainer.style.gridTemplateAreas = getGridTemplateAreas(
-            this.gridAreas.sort(() => 0.5 - Math.random()),
-            this.width,
-        );
-        */
-        return this;
     }
 
     reset() {
@@ -99,7 +58,7 @@ class Game {
     }
 
     start() {
-        this.sortCardsByRandom();
+        // this.sortCardsByRandom();
         this.state = 'ready';
         this.timer.show();
 
@@ -143,7 +102,7 @@ class Game {
 
         if (this.state === 'win') {
             this.timer.stop(); // остановим таймер
-            this.popup.show(this.state);
+            // this.popup.show(this.state);
         }
 
         return this;

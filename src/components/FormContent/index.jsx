@@ -1,48 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+import Form from './components/Form/index.jsx';
+import fields from './fields.js';
 import styles from './styles.css';
 
-const FormContent = ({ isVanilla }) => {
-    const [form, setForm] = useState({
-        profileName: '',
-        profileAge: 0,
-        profilePhone: '',
-        profileNumber: 0,
-    });
+const numberReg = /^-?\d+$/;
+const lettersReg = /^[а-яёА-ЯЁa-zA-Z]*$/;
 
-    const { inputErrorClass, formValidClass, formInvalidClass } = {
-        formClass: styles.form,
-        formValidClass: styles.form_valid,
-        formInvalidClass: styles.form_invalid,
-        inputErrorClass: styles.input_error,
-    };
-
-    const addErrorClass = elem => {
-        elem.classList.add(inputErrorClass);
-    };
-
-    const removeErrorClass = elem => {
-        elem.classList.remove(inputErrorClass);
-    };
-
-    const validator = elem => {
-        if (elem.dataset.validator === 'letters') {
-            if (/^[а-яёА-ЯЁa-zA-Z]*$/.test(elem.value)) {
-                removeErrorClass(elem);
-            } else addErrorClass(elem);
+const FormContent = () => {
+    const validator = (value, options) => {
+        if (options.validator === 'letters') {
+            if (lettersReg.test(value)) {
+                return true;
+            }
+            return false;
         }
         /* кусок из курса из подсказок */
-        if (elem.dataset.validator === 'number') {
-            const min = elem.dataset.validatorMin;
-            const max = elem.dataset.validatorMax;
+        if (options.validator === 'number') {
+            const min = options.validatorMin;
+            const max = options.validatorMax;
             // если не число
-            if (!/^-?\d+$/.test(elem.value)) {
-                addErrorClass(elem);
-                return;
+            if (!numberReg.test(value)) {
+                return false;
             }
             // если не входит в диапазон [min;max] или min или max == undefined
-            if (Number(elem.value) > max || Number(elem.value) < min) {
-                addErrorClass(elem);
+            if (Number(value) > max || Number(value) < min) {
+                return false;
             }
         }
         /* мой код с ошибкой 
@@ -58,55 +41,26 @@ const FormContent = ({ isVanilla }) => {
             } else addErrorClass(elem);
         }
         */
-        if (elem.dataset.validator === 'regexp') {
-            if (new RegExp(elem.dataset.validatorPattern).test(elem.value)) {
-                removeErrorClass(elem);
-            } else addErrorClass(elem);
+        if (options.validator === 'regexp') {
+            if (new RegExp(options.validatorPattern).test(value)) {
+                return true;
+            }
+            return false;
         }
+
+        return true;
     };
 
-    const validationForm = elem => {
-        if (elem.value) {
+    const validateForm = (value, options) => {
+        if (value) {
             // если поле заполнено
-            validator(elem); // запускаем валидацию
-        } else if (elem.dataset.required) {
+            return validator(value, options); // запускаем валидацию
+        }
+        if (options.required) {
             // если не заполнено и обязательное
-            addErrorClass(elem); // подсвечиваем красным
+            return false;
         }
-    };
-
-    const handleSubmit = event => {
-        const { target } = event;
-        event.preventDefault();
-        target.classList.remove(formValidClass);
-        target.classList.remove(formInvalidClass);
-        let isformValidClass = true;
-        const inputs = target.querySelectorAll('input');
-        [].slice.call(inputs).map(input => {
-            validationForm(input);
-            if (input.classList.contains(inputErrorClass)) isformValidClass = false;
-            return undefined;
-        });
-        if (isformValidClass) {
-            target.classList.add(formValidClass);
-        } else {
-            target.classList.add(formInvalidClass);
-        }
-    };
-
-    const handleChange = event => {
-        const { name, value } = event.target;
-        setForm({ ...form, [name]: value });
-    };
-
-    const handleBlur = event => {
-        const { target } = event;
-        validationForm(target);
-    };
-
-    const handleFocus = event => {
-        const { target } = event;
-        removeErrorClass(target);
+        return true;
     };
 
     return (
@@ -114,74 +68,7 @@ const FormContent = ({ isVanilla }) => {
             <div className={styles.content}>
                 <section className={styles.profile}>
                     <h1 className={styles.header}>Моя анкета</h1>
-                    <form
-                        action="#"
-                        className={styles.form}
-                        onSubmit={isVanilla ? null : handleSubmit}
-                    >
-                        <p className={styles.form__success}>Форма заполнена правильно</p>
-                        <p className={styles.form__error}>Форма содержит ошибки</p>
-                        <label htmlFor="profileName" className={styles.form__label}>
-                            Имя <span className={styles.required}>*</span>
-                        </label>
-                        <input
-                            name="profileName"
-                            placeholder="Моё имя"
-                            data-required
-                            data-validator="letters"
-                            className={styles.form__input}
-                            onBlur={isVanilla ? null : handleBlur}
-                            onFocus={isVanilla ? null : handleFocus}
-                            onChange={isVanilla ? null : handleChange}
-                        />
-                        <span className={styles.form__comment}>
-                            Только буквы (русские или английские)
-                        </span>
-                        <label htmlFor="profileAge" className={styles.form__label}>
-                            Возраст
-                        </label>
-                        <input
-                            name="profileAge"
-                            placeholder="Мой возраст"
-                            data-validator="number"
-                            data-validator-min="0"
-                            data-validator-max="100"
-                            className={styles.form__input}
-                            onBlur={isVanilla ? null : handleBlur}
-                            onFocus={isVanilla ? null : handleFocus}
-                            onChange={isVanilla ? null : handleChange}
-                        />
-                        <span className={styles.form__comment}>Число от 0 до 100</span>
-                        <label htmlFor="profilePhone" className={styles.form__label}>
-                            Телефон
-                        </label>
-                        <input
-                            name="profilePhone"
-                            placeholder="Мой телефон"
-                            data-validator="regexp"
-                            data-validator-pattern="^\+7\d{10}$"
-                            className={styles.form__input}
-                            onBlur={isVanilla ? null : handleBlur}
-                            onFocus={isVanilla ? null : handleFocus}
-                            onChange={isVanilla ? null : handleChange}
-                        />
-                        <span className={styles.form__comment}>В формате +71234567890</span>
-                        <label htmlFor="profileNumber" className={styles.form__label}>
-                            Любимое число
-                        </label>
-                        <input
-                            name="profileNumber"
-                            placeholder="42?"
-                            data-validator="number"
-                            className={styles.form__input}
-                            onBlur={isVanilla ? null : handleBlur}
-                            onFocus={isVanilla ? null : handleFocus}
-                            onChange={isVanilla ? null : handleChange}
-                        />
-                        <button type="submit" className={styles.form__button}>
-                            Сохранить
-                        </button>
-                    </form>
+                    <Form fields={fields} validate={validateForm} />
                 </section>
             </div>
         </div>
