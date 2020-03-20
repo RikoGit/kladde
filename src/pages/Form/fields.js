@@ -21,7 +21,7 @@ export default [
         placeholder: 'Мой телефон',
         label: 'Телефон',
         comment: 'В формате +71234567890',
-        validateOptions: { validator: 'regexp', validatorPattern: '^\\+7d{10}$' },
+        validateOptions: { validator: 'regexp', validatorPattern: '^\\+7\\d{10}$' },
     },
     {
         name: 'profileNumber',

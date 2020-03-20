@@ -1,11 +1,9 @@
 import React from 'react';
 
-import FormContent from '../../components/FormContent/index.jsx';
-import styles from '../../components/FormContent/styles.css';
-import validateForm from './script.js';
+// import validateForm from './script.js';
 
 class VanillaForm extends React.Component {
-    componentDidMount() {
+    /*    componentDidMount() {
         validateForm({
             formClass: styles.form,
             formValidClass: styles.form_valid,
@@ -13,9 +11,10 @@ class VanillaForm extends React.Component {
             inputErrorClass: styles.input_error,
         });
     }
+    */
 
     render() {
-        return <FormContent isVanilla />;
+        return 'VanillaForm';
     }
 }
 

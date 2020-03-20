@@ -47,23 +47,17 @@
 }
 .form__text {
     margin: 0;
-    padding: 16px;
-
-    border-radius: 3px;
+    padding: 0 16px;
+    height: 46px;
+    line-height: 46px;
 }
 .form__success {
     color: #155724;
     background: #d4edda;
 }
-.form_valid .form__success {
-    display: block;
-}
 .form__error {
     color: #721c24;
     background: #f8d7da;
-}
-.form_invalid .form__error {
-    display: block;
 }
 .input_error {
     border-color: #d00;
