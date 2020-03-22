@@ -42,21 +42,18 @@ const Form = ({ fields, validate }) => {
         validateForm();
     };
 
-    /* 
-    const handleFocus = () => {
-        setFocus(true);
-        // const { target } = event;
-        // removeErrorClass(target);
-    };
-    */
-
     const fieldsForm = fields.map(field => (
         <Input
             key={field.name}
             name={field.name}
             value={form[field.name]}
             placeholder={field.placeholder}
-            label={field.label}
+            label={
+                <>
+                    {field.label}{' '}
+                    {field.validateOptions.required && <span className={styles.required}>*</span>}
+                </>
+            }
             comment={field.comment}
             onChange={value => {
                 setForm({ ...form, [field.name]: value });

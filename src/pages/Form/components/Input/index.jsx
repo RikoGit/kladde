@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import styles from '../../styles.css';
+import styles from './styles.css';
 
 const Input = ({ name, value, placeholder, label, comment, onChange, onBlur, isValid }) => (
     <>
@@ -19,40 +19,5 @@ const Input = ({ name, value, placeholder, label, comment, onChange, onBlur, isV
         <span className={styles.form__comment}>{comment}</span>
     </>
 );
-
-/* 
-this.state = {
-    foo: {
-        bar: 3,
-        baz: 19,
-    },
-    quz: 8,
-};
-
-render () { 
-    const fooState = this.state.foo; // { bar: 3, baz: 19 }
-
-    fooState.bar = 10;
-
-    this.setState({
-        ...this.state,
-        foo: {
-            ...this.state.foo,
-            bar: 10,
-        },
-    });
-}
-
-const Foo = () => {
-    const [value, setValue] = useState(4);
-
-    setValue(4);
-}
-
-
-this.setState({
-    quz: 8,
-})
-*/
 
 export default Input;
