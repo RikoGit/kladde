@@ -13,7 +13,7 @@ const validateForm = form => {
     const validationMessageElement = form.querySelector(`.${styles.form__text}`);
     let isFormValidClass = true;
     const inputs = form.querySelectorAll('input');
-    [].slice.call(inputs).map(item => {
+    [...inputs].map(item => {
         const isValid = validate(item.value, item.dataset);
         if (isValid) {
             removeErrorClass(item);

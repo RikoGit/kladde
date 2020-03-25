@@ -3,6 +3,8 @@ import cn from 'classnames';
 
 import styles from './styles.css';
 
+const getOnChangeHandler = onChange => event => onChange(event.target.value.trim());
+
 const Input = ({ name, value, placeholder, label, comment, onChange, onBlur, isValid }) => (
     <>
         <label className={styles.form__label}>
@@ -12,7 +14,7 @@ const Input = ({ name, value, placeholder, label, comment, onChange, onBlur, isV
                 placeholder={placeholder}
                 className={cn(styles.form__input, isValid || styles.input_error)}
                 onBlur={onBlur}
-                onChange={event => onChange(event.target.value.trim())}
+                onChange={getOnChangeHandler(onChange)}
                 value={value}
             />
         </label>
