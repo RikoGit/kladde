@@ -1,4 +1,4 @@
-import styles from '../styles.css';
+import styles from '../../styles.css';
 
 class Popup {
     constructor({ onClick, parentNode = document.body }) {

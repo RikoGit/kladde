@@ -13,6 +13,7 @@
     box-shadow: 5px 0px 10px -5px #ccc inset;
     color: #434344;
     min-height: 100%;
+    position: relative;
 }
 .header {
     grid-area: header;

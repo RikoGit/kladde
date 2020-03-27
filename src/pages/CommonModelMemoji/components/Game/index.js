@@ -1,7 +1,8 @@
-import Popup from './Popup.js';
-import Timer from './Timer.js';
-import Card from './Card.js';
-import styles from '../styles.css';
+import Popup from '../Popup/index.js';
+import Timer from '../Timer/index.js';
+import Card from '../Card/index.js';
+import commonStyles from '../../commonStyles.css';
+import styles from '../../styles.css';
 
 const init = () => {
     function getGridTemplateAreas(indices, number, separator = "'") {
@@ -58,7 +59,10 @@ const init = () => {
                 'click',
                 event => {
                     const { target } = event;
-                    if (target.classList.contains(styles.card__back) && this.state === 'ready') {
+                    if (
+                        target.classList.contains(commonStyles.card__back) &&
+                        this.state === 'ready'
+                    ) {
                         this.timer.start(); // запустили таймер
                         this.cards[target.parentNode.dataset.index - 1].open(); // открыли текущую карту
                         this.closeDifferentCards() // закрыли пару разных карт, если такие есть
@@ -83,7 +87,7 @@ const init = () => {
 
         setTransition() {
             const elem = document.createElement('style');
-            elem.innerText = `.${styles.card} {transition: ${this.transition / 1000}s}`;
+            elem.innerText = `.${commonStyles.card} {transition: ${this.transition / 1000}s}`;
             document.head.appendChild(elem);
 
             return this;
@@ -91,7 +95,7 @@ const init = () => {
 
         onTimerEnd() {
             this.state = 'lose';
-            // this.timer.stop();
+            this.timer.stop();
             this.popup.show(this.state);
         }
 
@@ -170,7 +174,7 @@ const init = () => {
     }
 
     const cardsContainer = document.querySelector(`.${styles.cards}`);
-    const cardElements = [...cardsContainer.querySelectorAll(`.${styles.card}`)];
+    const cardElements = [...cardsContainer.querySelectorAll(`.${commonStyles.card}`)];
 
     // eslint-disable-next-line no-new
     new Game({

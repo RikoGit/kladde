@@ -1,4 +1,4 @@
-import styles from '../styles.css';
+import styles from '../../styles.css';
 
 class Timer {
     constructor({ timeout, onTimerEnd, parentNode }) {

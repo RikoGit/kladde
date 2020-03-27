@@ -30,6 +30,7 @@ class Timer {
         this.result -= this.step;
 
         if (this.result === -this.step) {
+            this.stop();
             this.onTimerEnd();
 
             return this;
