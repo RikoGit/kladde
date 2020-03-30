@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
-import MemojiContent from '../../components/MemojiContent/index.jsx';
-import init from '../../components/MemojiContent/components/Game/init.js';
+import MemojiWrapper from '../../components/MemojiWrapper/index.jsx';
+import Game from './components/Game/index.js';
 
-class CommonModelMemoji extends React.Component {
-    componentDidMount() {
-        init();
-    }
+const init = rootElementRef => {
+    rootElementRef.current.replaceWith(
+        new Game({
+            width: 4,
+            timeout: 20000,
+        }).rootElement,
+    );
+};
 
-    render() {
-        return <MemojiContent />;
-    }
-}
+const CommonModelMemoji = () => {
+    const rootElementRef = useRef();
+    useEffect(() => init(rootElementRef), []);
+
+    return (
+        <MemojiWrapper>
+            <div ref={rootElementRef} />
+        </MemojiWrapper>
+    );
+};
+
 export default CommonModelMemoji;

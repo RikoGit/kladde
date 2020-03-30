@@ -1,4 +1,5 @@
-import styles from '../../styles.css';
+const styles = {};
+// import styles from '../../styles.css';
 
 class Card {
     constructor({ domElement, type, index, state, gridArea = `card${index}` }) {
