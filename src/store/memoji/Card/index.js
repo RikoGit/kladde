@@ -1,11 +1,15 @@
-class Card {
-    constructor({ type, index, state }) {
-        this.type = type;
-        this.index = index;
+export default class Card {
+    constructor({ value, name }) {
+        this.value = value;
+        this.name = name;
+        this.setState('close');
+    }
+
+    setState(state) {
         this.state = state;
     }
 
-    open() {
+    /*    open() {
         this.state = 'open';
 
         return this;
@@ -31,6 +35,6 @@ class Card {
 
         return this;
     }
-}
 
-export default Card;
+ */
+}

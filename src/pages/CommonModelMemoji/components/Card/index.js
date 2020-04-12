@@ -1,13 +1,24 @@
-const styles = {};
-// import styles from '../../styles.css';
+import styles from './styles.css';
 
 class Card {
-    constructor({ domElement, type, index, state, gridArea = `card${index}` }) {
-        this.domElement = domElement;
-        this.type = type;
-        this.index = index;
-        this.state = state;
-        this.gridArea = gridArea;
+    constructor({ rootElementType = 'div', card: { value, name } }) {
+        this.rootElement = document.createElement(rootElementType);
+        this.rootElement.className = styles.root;
+        this.rootElement.innerHTML = [
+            `<div class="${styles.card__face}" aria-label="${name}" role="img">${value}</div>`,
+            `<div class="${styles.card__back}"></div>`,
+        ].join('');
+
+        // this.domElement = domElement;
+        // this.type = type;
+        // this.index = index;
+        // this.state = state;
+        // this.gridArea = gridArea;
+        this.render();
+    }
+
+    render() {
+        this.rootElement.classList.add(styles.card_state_close);
     }
 
     setGridArea() {

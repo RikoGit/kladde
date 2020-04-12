@@ -6,8 +6,8 @@ export default [
     { path: 'vanillaform', title: 'Проверка формы' },
     { path: 'form', title: 'Проверка формы (react)' },
     { path: 'vanillamemoji', title: 'Memoji' },
-    { path: 'commonmodelmemoji', title: 'Memoji (общая модель)' },
-    { path: 'memoji', title: 'Memoji (react)' },
+    // { path: 'commonmodelmemoji', title: 'Memoji (общая модель)' },
+    // { path: 'memoji', title: 'Memoji (react)' },
     { path: 'todo', title: 'TODO' },
     { path: 'memegenerator', title: 'Meme generator' },
 ];

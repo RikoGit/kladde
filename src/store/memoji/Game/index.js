@@ -1,23 +1,21 @@
-import Timer from './Timer.js';
-import Card from './Card.js';
+import Timer from '../Timer/index.js';
+import Card from '../Card/index.js';
+import icons from './icons.js';
+
+const doubleIcons = [...icons, ...icons];
 
 class Game {
-    constructor({ cardElements, timeout }) {
-        this.cards = cardElements.map(
-            card =>
-                new Card({
-                    type: card.dataset.type,
-                    index: card.dataset.index,
-                    state: 'close',
-                }),
-        );
+    constructor({ timeout }) {
+        this.cards = doubleIcons.map(icon => new Card(icon));
         this.timer = new Timer({
             timeout,
             onTimerEnd: () => this.onTimerEnd(),
         });
-        this.state = '';
+        this.shuffle();
+    }
 
-        this.onClickCard().start();
+    shuffle() {
+        this.cards.sort(() => 0.5 - Math.random());
     }
 
     onClickCard() {

@@ -1,25 +1,30 @@
 // import Popup from '../Popup/index.js';
 // import Timer from '../Timer/index.js';
-// import Card from '../Card/index.js';
+import Card from '../Card/index.js';
 import styles from './styles.css';
 
 class Game {
     // constructor({ cardsContainer, cardElements, width, timeout }) {
-    constructor() {
+    constructor(gameModel) {
+        this.gameModel = gameModel;
         this.rootElement = document.createElement('div');
         this.rootElement.className = styles.root;
         this.rootElement.innerHTML = `<ul class="${styles.cards}"></ul>`;
+        this.cardsElement = this.rootElement.querySelector(`.${styles.cards}`);
+        this.cardByModel = new Map(
+            this.gameModel.cards.map(card => [
+                card,
+                new Card({
+                    rootElementType: 'li',
+                    card,
+                }),
+            ]),
+        );
+        this.cardModelByRootElement = new Map();
+        this.renderCards();
+
         /*    this.cardsContainer = cardsContainer;
         this.width = width;
-        this.cards = cardElements.map(
-            card =>
-                new Card({
-                    domElement: card,
-                    type: card.dataset.type,
-                    index: card.dataset.index,
-                    state: 'close',
-                }),
-        );
         this.timer = new Timer({
             timeout,
             onTimerEnd: () => this.onTimerEnd(),
@@ -40,21 +45,24 @@ class Game {
     */
     }
 
-    onClickCard() {
-        this.cardsContainer.addEventListener(
-            'click',
-            event => {
-                const { target } = event;
-                if (target.classList.contains(styles.card__back) && this.state === 'ready') {
-                    this.timer.start(); // запустили таймер
-                    this.cards[target.parentNode.dataset.index - 1].open(); // открыли текущую карту
-                    this.closeDifferentCards() // закрыли пару разных карт, если такие есть
-                        .setStateCards() // добавили state(different/identical) паре открытых карт
-                        .stop();
-                }
-            },
-            true,
+    renderCards() {
+        this.gameModel.cards.forEach(card =>
+            this.cardsElement.append(this.cardByModel.get(card).rootElement),
         );
+    }
+
+    onClickCard() {
+        this.cardsElement.addEventListener('click', event => {
+            this.gameModel.onClickCard();
+            const { target } = event;
+            if (target.classList.contains(styles.card__back) && this.state === 'ready') {
+                this.timer.start(); // запустили таймер
+                this.cards[target.parentNode.dataset.index - 1].open(); // открыли текущую карту
+                this.closeDifferentCards() // закрыли пару разных карт, если такие есть
+                    .setStateCards() // добавили state(different/identical) паре открытых карт
+                    .stop();
+            }
+        });
 
         return this;
     }
