@@ -84,7 +84,7 @@ const init = () => {
         setTransition() {
             const elem = document.createElement('style');
             elem.innerText = `.${styles.card} {transition: ${this.transition / 1000}s}`;
-            document.head.appendChild(elem);
+            document.head.append(elem);
 
             return this;
         }

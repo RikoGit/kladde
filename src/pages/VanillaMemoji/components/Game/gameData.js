@@ -1,4 +1,4 @@
-const gameData = [
+const icons = [
     {
         type: '🐟',
         label: 'fish',
@@ -24,5 +24,4 @@ const gameData = [
         label: 'unicorn',
     },
 ];
-
-export default [...gameData, ...gameData];
+export default [...icons, ...icons];
