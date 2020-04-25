@@ -7,6 +7,7 @@ const doubleIcons = [...icons, ...icons];
 class Game {
     constructor({ timeout }) {
         this.cards = doubleIcons.map(icon => new Card(icon));
+        this.state = 'stop';
         this.timer = new Timer({
             timeout,
             onTimerEnd: () => this.onTimerEnd(),
@@ -18,23 +19,22 @@ class Game {
         this.cards.sort(() => 0.5 - Math.random());
     }
 
-    onClickCard() {
-        this.cardsContainer.addEventListener(
-            'click',
-            event => {
-                const { target } = event;
-                if (target.classList.contains('card__back') && this.state === 'ready') {
-                    this.timer.start(); // запустили таймер
-                    this.cards[target.parentNode.dataset.index - 1].open(); // открыли текущую карту
-                    this.closeDifferentCards() // закрыли пару разных карт, если такие есть
-                        .setStateCards() // добавили state(different/identical) паре открытых карт
-                        .stop();
-                }
-            },
-            true,
-        );
-
-        return this;
+    onClickCard(card) {
+        if (card.state !== 'close') {
+            return;
+        }
+        if (this.state === 'win' || this.state === 'lose') {
+            return;
+        }
+        if (this.state === 'stop') {
+            this.start();
+        }
+        card.setState('open');
+        this.closeDifferentCards();
+        this.setStateForPairOfCards();
+        if (this.cards.every(({ state }) => state === 'identical')) {
+            this.stop('win');
+        }
     }
 
     onTimerEnd() {
@@ -56,8 +56,7 @@ class Game {
     }
 
     start() {
-        // this.sortCardsByRandom();
-        this.state = 'ready';
+        this.state = 'play';
         this.timer.show();
 
         return this;
@@ -72,38 +71,32 @@ class Game {
         return this;
     }
 
-    // метод выделения пары - одинаковая или нет
-    setStateCards() {
+    setStateForPairOfCards() {
         const openCards = this.cards.filter(card => card.state === 'open');
 
         if (openCards.length === 2) {
-            if (openCards[0].type === openCards[1].type) {
-                openCards.forEach(card => card.setStateIdentical());
+            if (openCards[0].value === openCards[1].value) {
+                openCards.forEach(card => card.setState('identical'));
             } else {
-                openCards.forEach(card => card.setStateDifferent());
+                openCards.forEach(card => card.setState('different'));
             }
         }
-
-        return this;
     }
 
     closeDifferentCards() {
-        this.cards.filter(card => card.state === 'different').forEach(card => card.close());
-
-        return this;
+        this.cards
+            .filter(card => card.state === 'different')
+            .forEach(card => card.setState('close'));
     }
 
-    stop() {
-        if (this.cards.every(card => card.state === 'identical')) {
-            this.state = 'win';
-        }
-
+    stop(state) {
+        this.state = state;
+        /*
         if (this.state === 'win') {
             this.timer.stop(); // остановим таймер
             // this.popup.show(this.state);
         }
-
-        return this;
+        */
     }
 }
 

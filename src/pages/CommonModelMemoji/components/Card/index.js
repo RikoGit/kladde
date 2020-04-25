@@ -1,7 +1,7 @@
 import styles from './styles.css';
 
 class Card {
-    constructor({ rootElementType = 'div', card: { value, name } }) {
+    constructor({ rootElementType = 'div', cardModel: { value, name } }) {
         this.rootElement = document.createElement(rootElementType);
         this.rootElement.className = styles.root;
         this.rootElement.innerHTML = [

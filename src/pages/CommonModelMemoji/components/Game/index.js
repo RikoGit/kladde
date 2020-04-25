@@ -12,16 +12,32 @@ class Game {
         this.rootElement.innerHTML = `<ul class="${styles.cards}"></ul>`;
         this.cardsElement = this.rootElement.querySelector(`.${styles.cards}`);
         this.cardByModel = new Map(
-            this.gameModel.cards.map(card => [
-                card,
+            this.gameModel.cards.map(cardModel => [
+                cardModel,
                 new Card({
                     rootElementType: 'li',
-                    card,
+                    cardModel,
                 }),
             ]),
         );
-        this.cardModelByRootElement = new Map();
+        this.cardModelByRootElement = new Map(
+            [...this.cardByModel.entries()].map(([cardModel, cardComponent]) => [
+                cardComponent.rootElement,
+                cardModel,
+            ]),
+        );
         this.renderCards();
+        this.cardsElement.addEventListener('click', ({ target }) => {
+            let currentElement = target;
+            while (currentElement && currentElement !== this.cardsElement) {
+                if (this.cardModelByRootElement.has(currentElement)) {
+                    this.onClickCard(this.cardModelByRootElement.get(currentElement));
+
+                    return;
+                }
+                currentElement = currentElement.parentElement;
+            }
+        });
 
         /*    this.cardsContainer = cardsContainer;
         this.width = width;
@@ -45,26 +61,19 @@ class Game {
     */
     }
 
+    onClickCard(cardModel) {
+        this.gameModel.onClickCard(cardModel);
+        this.render();
+    }
+
+    render() {
+        return this;
+    }
+
     renderCards() {
         this.gameModel.cards.forEach(card =>
             this.cardsElement.append(this.cardByModel.get(card).rootElement),
         );
-    }
-
-    onClickCard() {
-        this.cardsElement.addEventListener('click', event => {
-            this.gameModel.onClickCard();
-            const { target } = event;
-            if (target.classList.contains(styles.card__back) && this.state === 'ready') {
-                this.timer.start(); // запустили таймер
-                this.cards[target.parentNode.dataset.index - 1].open(); // открыли текущую карту
-                this.closeDifferentCards() // закрыли пару разных карт, если такие есть
-                    .setStateCards() // добавили state(different/identical) паре открытых карт
-                    .stop();
-            }
-        });
-
-        return this;
     }
 
     setGridAreaCards() {
