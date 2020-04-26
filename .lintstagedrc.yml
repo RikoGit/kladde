@@ -1,2 +1,2 @@
-'*.{cjs,js,jsx}': [eslint --fix, git add]
-'*.css': [stylelint --fix, git add]
+'*.{cjs,js,jsx}': [eslint --fix]
+'*.css': [stylelint --fix]
