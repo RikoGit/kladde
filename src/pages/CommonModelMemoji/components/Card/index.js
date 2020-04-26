@@ -1,77 +1,26 @@
 import styles from './styles.css';
 
 class Card {
-    constructor({ rootElementType = 'div', cardModel: { value, name } }) {
+    constructor({ rootElementType = 'div', cardModel }) {
         this.rootElement = document.createElement(rootElementType);
         this.rootElement.className = styles.root;
         this.rootElement.innerHTML = [
-            `<div class="${styles.card__face}" aria-label="${name}" role="img">${value}</div>`,
+            `<div class="${styles.card__face}" aria-label="${cardModel.name}" role="img">${cardModel.value}</div>`,
             `<div class="${styles.card__back}"></div>`,
         ].join('');
+        this.cardModel = cardModel;
 
-        // this.domElement = domElement;
-        // this.type = type;
-        // this.index = index;
-        // this.state = state;
-        // this.gridArea = gridArea;
         this.render();
     }
 
     render() {
-        this.rootElement.classList.add(styles.card_state_close);
+        this.rootElement.classList.remove(styles.card_state_close);
+        this.rootElement.classList.remove(styles.card_state_open);
+        this.rootElement.classList.remove(styles.card_state_identical);
+        this.rootElement.classList.remove(styles.card_state_different);
+
+        this.rootElement.classList.add(styles[`card_state_${this.cardModel.state}`]);
     }
-
-    setGridArea() {
-        this.domElement.style.gridArea = this.gridArea;
-
-        return this;
-    }
-
-    open() {
-        this.domElement.classList.remove(Card.CLASSES.state.close);
-        this.domElement.classList.add(Card.CLASSES.state.open);
-        this.state = 'open';
-
-        return this;
-    }
-
-    close() {
-        if (this.state === 'close') {
-            return undefined;
-        }
-        this.domElement.classList.remove(Card.CLASSES.state.open);
-        this.domElement.classList.add(Card.CLASSES.state.close);
-        this.domElement.classList.remove(Card.CLASSES.state.identical);
-        this.domElement.classList.remove(Card.CLASSES.state.different);
-        this.state = 'close';
-
-        return this;
-    }
-
-    setStateIdentical() {
-        this.domElement.classList.remove(Card.CLASSES.state.open);
-        this.domElement.classList.add(Card.CLASSES.state.identical);
-        this.state = 'identical';
-
-        return this;
-    }
-
-    setStateDifferent() {
-        this.domElement.classList.remove(Card.CLASSES.state.open);
-        this.domElement.classList.add(Card.CLASSES.state.different);
-        this.state = 'different';
-
-        return this;
-    }
-
-    static CLASSES = {
-        state: {
-            open: styles.card_state_open,
-            close: styles.card_state_close,
-            identical: styles.card_state_identical,
-            different: styles.card_state_different,
-        },
-    };
 }
 
 export default Card;

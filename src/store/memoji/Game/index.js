@@ -57,9 +57,7 @@ class Game {
 
     start() {
         this.state = 'play';
-        this.timer.show();
-
-        return this;
+        // this.timer.show();
     }
 
     restart() {

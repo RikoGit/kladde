@@ -67,7 +67,7 @@ class Game {
     }
 
     render() {
-        return this;
+        [...this.cardByModel.values()].forEach(card => card.render());
     }
 
     renderCards() {
@@ -76,15 +76,7 @@ class Game {
         );
     }
 
-    setGridAreaCards() {
-        this.cards.forEach(card => {
-            card.setGridArea();
-            this.gridAreas.push(card.gridArea);
-        });
-
-        return this;
-    }
-
+    /*
     setTransition() {
         const elem = document.createElement('style');
         elem.innerText = `.${styles.card} {transition: ${this.transition / 1000}s}`;
@@ -92,6 +84,7 @@ class Game {
 
         return this;
     }
+    */
 
     onTimerEnd() {
         this.state = 'lose';
@@ -124,9 +117,7 @@ class Game {
     start() {
         this.sortCardsByRandom();
         this.state = 'ready';
-        this.timer.show();
-
-        return this;
+        // this.timer.show();
     }
 
     restart() {
