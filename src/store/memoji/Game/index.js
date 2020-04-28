@@ -5,11 +5,11 @@ import icons from './icons.js';
 const doubleIcons = [...icons, ...icons];
 
 class Game {
-    constructor({ timeout }) {
+    constructor({ timeoutInSeconds }) {
         this.cards = doubleIcons.map(icon => new Card(icon));
         this.state = 'stop';
         this.timer = new Timer({
-            timeout,
+            timeoutInSeconds,
             onTimerEnd: () => this.onTimerEnd(),
         });
         this.shuffle();
@@ -38,9 +38,7 @@ class Game {
     }
 
     onTimerEnd() {
-        this.state = 'lose';
-        this.timer.stop();
-        // this.popup.show(this.state);
+        this.stop('lose');
     }
 
     onPopupClick() {
@@ -57,7 +55,7 @@ class Game {
 
     start() {
         this.state = 'play';
-        // this.timer.show();
+        this.timer.start();
     }
 
     restart() {
@@ -89,6 +87,8 @@ class Game {
 
     stop(state) {
         this.state = state;
+        this.timer.stop();
+        // this.popup.show(this.state);
         /*
         if (this.state === 'win') {
             this.timer.stop(); // остановим таймер

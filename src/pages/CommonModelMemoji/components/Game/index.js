@@ -1,10 +1,9 @@
-// import Popup from '../Popup/index.js';
-// import Timer from '../Timer/index.js';
+import Popup from '../Popup/index.js';
+import Timer from '../Timer/index.js';
 import Card from '../Card/index.js';
 import styles from './styles.css';
 
 class Game {
-    // constructor({ cardsContainer, cardElements, width, timeout }) {
     constructor(gameModel) {
         this.gameModel = gameModel;
         this.rootElement = document.createElement('div');
@@ -12,7 +11,7 @@ class Game {
         this.rootElement.innerHTML = `<ul class="${styles.cards}"></ul>`;
         this.cardsElement = this.rootElement.querySelector(`.${styles.cards}`);
         this.cardByModel = new Map(
-            this.gameModel.cards.map(cardModel => [
+            gameModel.cards.map(cardModel => [
                 cardModel,
                 new Card({
                     rootElementType: 'li',
@@ -38,6 +37,14 @@ class Game {
                 currentElement = currentElement.parentElement;
             }
         });
+        this.timer = new Timer(gameModel.timer);
+        this.gameModel.timer.onTick = () => this.timer.render();
+        this.rootElement.append(this.timer.rootElement);
+
+        this.popup = new Popup({ gameModel });
+        // this.rootElement.after(this.popup.rootElement);
+
+        setTimeout(() => this.rootElement.after(this.popup.rootElement), 8);
 
         /*    this.cardsContainer = cardsContainer;
         this.width = width;
@@ -68,6 +75,8 @@ class Game {
 
     render() {
         [...this.cardByModel.values()].forEach(card => card.render());
+        this.timer.render();
+        this.popup.render();
     }
 
     renderCards() {
@@ -90,22 +99,13 @@ class Game {
         this.state = 'lose';
         this.timer.stop();
         this.popup.show(this.state);
+        this.render();
     }
 
     onPopupClick() {
         this.popup.hide();
         this.timer.stop();
         this.restart();
-    }
-
-    sortCardsByRandom() {
-        // добавим style grid-template-areas cardsContainer
-        /*  this.cardsContainer.style.gridTemplateAreas = getGridTemplateAreas(
-            this.gridAreas.sort(() => 0.5 - Math.random()),
-            this.width,
-        );
-        */
-        return this;
     }
 
     reset() {
@@ -125,27 +125,6 @@ class Game {
         setTimeout(() => {
             this.start();
         }, this.transition);
-
-        return this;
-    }
-
-    // метод выделения пары - одинаковая или нет
-    setStateCards() {
-        const openCards = this.cards.filter(card => card.state === 'open');
-
-        if (openCards.length === 2) {
-            if (openCards[0].type === openCards[1].type) {
-                openCards.forEach(card => card.setStateIdentical());
-            } else {
-                openCards.forEach(card => card.setStateDifferent());
-            }
-        }
-
-        return this;
-    }
-
-    closeDifferentCards() {
-        this.cards.filter(card => card.state === 'different').forEach(card => card.close());
 
         return this;
     }

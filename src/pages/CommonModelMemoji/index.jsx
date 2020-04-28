@@ -5,8 +5,8 @@ import GameModel from '../../store/memoji/Game/index.js';
 import Game from './components/Game/index.js';
 
 const init = rootElement => {
-    const game = new GameModel({ timeout: 20000 });
-    rootElement.replaceWith(new Game(game).rootElement);
+    const gameModel = new GameModel({ timeoutInSeconds: 20 });
+    rootElement.replaceWith(new Game(gameModel).rootElement);
 };
 
 const CommonModelMemoji = () => {

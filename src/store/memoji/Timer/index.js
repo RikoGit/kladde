@@ -1,46 +1,45 @@
 class Timer {
-    constructor({ timeout, onTimerEnd }) {
-        this.step = 1000;
-        this.timerId = 0;
-        this.timeout = timeout;
-        this.result = timeout;
+    constructor({ timeoutInSeconds, onTimerEnd, onTick }) {
+        this.state = 'stop';
+        this.timeoutInSeconds = timeoutInSeconds;
         this.onTimerEnd = onTimerEnd;
+        this.onTick = onTick;
+        this.timerId = null;
+        this.timeLeft = timeoutInSeconds;
     }
 
-    doStep() {
-        // const time = new Date(this.result);
-        /* 
-        this.domElement.textContent = `${String(time.getMinutes()).padStart(2, 0)} : ${String(
-            time.getSeconds(),
-        ).padStart(2, 0)}`;
-        */
-        this.result -= this.step;
+    static tickDuration = 1000;
 
-        if (this.result === -this.step) {
-            this.onTimerEnd();
-
-            return this;
+    tick() {
+        this.timeLeft -= 1;
+        if (this.onTick) {
+            this.onTick();
         }
 
-        return this;
+        if (this.timeLeft === 0) {
+            clearInterval(this.timerId);
+            this.state = 'stop';
+            if (this.onTimerEnd) {
+                this.onTimerEnd();
+            }
+        }
     }
 
     start() {
-        if (!this.timerId) {
-            this.timerId = setInterval(() => this.doStep(), this.step);
+        if (this.timerId) {
+            this.timerId = clearInterval(this.timerId);
         }
-
-        return this;
+        this.timerId = setInterval(() => this.tick(), Timer.tickDuration);
+        this.timeLeft = this.timeoutInSeconds;
+        this.state = 'play';
     }
 
     stop() {
         if (this.timerId) {
             clearInterval(this.timerId);
         }
-        this.timerId = 0; // обнулим счетчик
-        this.result = this.timeout;
-
-        return this;
+        this.timerId = null;
+        this.state = 'stop';
     }
 }
 
