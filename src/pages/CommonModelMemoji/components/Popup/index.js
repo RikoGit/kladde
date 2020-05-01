@@ -1,6 +1,6 @@
 import styles from './styles.css';
 
-class Popup {
+export default class Popup {
     constructor({ gameModel, onClick }) {
         this.gameModel = gameModel;
         this.createRootElement();
@@ -44,5 +44,3 @@ class Popup {
         }
     }
 }
-
-export default Popup;

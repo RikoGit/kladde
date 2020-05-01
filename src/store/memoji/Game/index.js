@@ -4,10 +4,12 @@ import icons from './icons.js';
 
 const doubleIcons = [...icons, ...icons];
 
-class Game {
-    constructor({ timeoutInSeconds }) {
+export default class Game {
+    constructor({ timeoutInSeconds, onChange, onShuffle }) {
         this.cards = doubleIcons.map(icon => new Card(icon));
-        this.state = 'stop';
+        this.setState('stop');
+        this.onChange = onChange;
+        this.onShuffle = onShuffle;
         this.timer = new Timer({
             timeoutInSeconds,
             onTimerEnd: () => this.onTimerEnd(),
@@ -15,8 +17,17 @@ class Game {
         this.shuffle();
     }
 
+    static transitionDuration = 500;
+
+    setState(state) {
+        if (this.state === state) return;
+        this.state = state;
+        if (this.onChange) this.onChange();
+    }
+
     shuffle() {
         this.cards.sort(() => 0.5 - Math.random());
+        if (this.onShuffle) this.onShuffle();
     }
 
     onClickCard(card) {
@@ -42,19 +53,18 @@ class Game {
     }
 
     onPopupClick() {
-        // this.popup.hide();
-        this.timer.stop();
-        this.restart();
+        this.setState('stop');
+        this.closeAllCards();
+        setTimeout(() => this.shuffle(), Game.transitionDuration);
+        this.timer.setDefaultTimeLeft();
     }
 
-    reset() {
-        this.cards.forEach(card => card.close());
-
-        return this;
+    closeAllCards() {
+        this.cards.forEach(card => card.setState('close'));
     }
 
     start() {
-        this.state = 'play';
+        this.setState('play');
         this.timer.start();
     }
 
@@ -86,16 +96,7 @@ class Game {
     }
 
     stop(state) {
-        this.state = state;
+        this.setState(state);
         this.timer.stop();
-        // this.popup.show(this.state);
-        /*
-        if (this.state === 'win') {
-            this.timer.stop(); // остановим таймер
-            // this.popup.show(this.state);
-        }
-        */
     }
 }
-
-export default Game;

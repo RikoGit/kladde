@@ -1,6 +1,6 @@
 import styles from './styles.css';
 
-class Timer {
+export default class Timer {
     constructor(timerModel) {
         this.timerModel = timerModel;
         this.rootElement = document.createElement('div');
@@ -16,5 +16,3 @@ class Timer {
         ).padStart(2, 0)}`;
     }
 }
-
-export default Timer;

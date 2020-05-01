@@ -1,6 +1,6 @@
 import styles from './styles.css';
 
-class Card {
+export default class Card {
     constructor({ rootElementType = 'div', cardModel }) {
         this.rootElement = document.createElement(rootElementType);
         this.rootElement.innerHTML = [
@@ -18,5 +18,3 @@ class Card {
         }`;
     }
 }
-
-export default Card;
