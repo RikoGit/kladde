@@ -6,9 +6,7 @@ import styles from './styles.css';
 export default class Game {
     constructor(gameModel) {
         this.gameModel = gameModel;
-        this.rootElement = document.createElement('div');
-        this.rootElement.className = styles.root;
-        this.rootElement.innerHTML = `<ul class="${styles.cards}"></ul>`;
+        this.createRootElement();
         this.cardsElement = this.rootElement.querySelector(`.${styles.cards}`);
         this.cardByModel = new Map(
             gameModel.cards.map(cardModel => [
@@ -30,29 +28,44 @@ export default class Game {
             ]),
         );
         this.renderCards();
+        this.setClickCardHandler();
+        this.gameModel.onShuffle = () => this.renderCards();
+        this.appendTimer();
+        this.appendPopup();
+    }
+
+    createRootElement() {
+        this.rootElement = document.createElement('div');
+        this.rootElement.className = styles.root;
+        this.rootElement.innerHTML = `<ul class="${styles.cards}"></ul>`;
+    }
+
+    appendTimer() {
+        this.timer = new Timer(this.gameModel.timer);
+        this.gameModel.timer.onChange = () => this.timer.render();
+        this.rootElement.append(this.timer.rootElement);
+    }
+
+    appendPopup() {
+        this.popup = new Popup({
+            gameModel: this.gameModel,
+            onClick: () => this.gameModel.onPopupClick(),
+        });
+        this.gameModel.onChange = () => this.popup.render();
+        this.rootElement.append(this.popup.rootElement);
+    }
+
+    setClickCardHandler() {
         this.cardsElement.addEventListener('click', ({ target }) => {
             let currentElement = target;
             while (currentElement && currentElement !== this.cardsElement) {
                 if (this.cardModelByRootElement.has(currentElement)) {
-                    this.onClickCard(this.cardModelByRootElement.get(currentElement));
-
+                    this.gameModel.onClickCard(this.cardModelByRootElement.get(currentElement));
                     return;
                 }
                 currentElement = currentElement.parentElement;
             }
         });
-        this.gameModel.onShuffle = () => this.renderCards();
-        this.timer = new Timer(gameModel.timer);
-        this.gameModel.timer.onChange = () => this.timer.render();
-        this.rootElement.append(this.timer.rootElement);
-
-        this.popup = new Popup({ gameModel, onClick: () => this.gameModel.onPopupClick() });
-        this.gameModel.onChange = () => this.popup.render();
-        this.rootElement.append(this.popup.rootElement);
-    }
-
-    onClickCard(cardModel) {
-        this.gameModel.onClickCard(cardModel);
     }
 
     renderCards() {
