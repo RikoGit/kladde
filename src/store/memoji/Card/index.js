@@ -6,6 +6,14 @@ export default class Card {
         this.setState('close');
     }
 
+    toPlainObject() {
+        return {
+            state: this.state,
+            name: this.name,
+            value: this.value,
+        };
+    }
+
     setState(state) {
         this.state = state;
     }

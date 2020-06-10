@@ -10,6 +10,13 @@ export default class Timer {
 
     static tickDuration = 1000;
 
+    toPlainObject() {
+        return {
+            state: this.state,
+            timeLeft: this.timeLeft,
+        };
+    }
+
     tick() {
         this.timeLeft -= 1;
 

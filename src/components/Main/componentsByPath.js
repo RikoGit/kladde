@@ -7,6 +7,7 @@ import Kittens from '../../pages/Kittens/index.jsx';
 import Form from '../../pages/Form/index.jsx';
 import VanillaForm from '../../pages/VanillaForm/index.jsx';
 import Memoji from '../../pages/Memoji/index.jsx';
+import ReduxMemoji from '../../pages/ReduxMemoji/index.jsx';
 import CommonModelMemoji from '../../pages/CommonModelMemoji/index.jsx';
 import VanillaMemoji from '../../pages/VanillaMemoji/index.jsx';
 
@@ -14,6 +15,7 @@ export default {
     '': Index,
     memegenerator: MemeGenerator,
     todo: Todo,
+    reduxmemoji: ReduxMemoji,
     memoji: Memoji,
     commonmodelmemoji: CommonModelMemoji,
     vanillamemoji: VanillaMemoji,

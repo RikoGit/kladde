@@ -19,6 +19,14 @@ export default class Game {
 
     static transitionDuration = 500;
 
+    toPlainObject() {
+        return {
+            cards: this.cards.map(card => card.toPlainObject()),
+            state: this.state,
+            timer: this.timer.toPlainObject(),
+        };
+    }
+
     setState(state) {
         if (this.state === state) return;
         this.state = state;

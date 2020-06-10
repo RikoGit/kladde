@@ -27,8 +27,8 @@ class Popup {
                     </span>\
                 </h1>\
                 <div id="${Popup.CLASSES.buttonid}" class="${Popup.CLASSES.button}">\
-                    <span class="${Popup.CLASSES.buttontext} ${Popup.CLASSES.buttontextwin}">Play again</span>\
-                    <span class="${Popup.CLASSES.buttontext} ${Popup.CLASSES.buttontextlose}">Try again</span>\
+                    <span class="${Popup.CLASSES.buttontextwin}">Play again</span>\
+                    <span class="${Popup.CLASSES.buttontextlose}">Try again</span>\
                 </div>\
             </div>`;
 
@@ -84,7 +84,6 @@ class Popup {
         letter: styles.popup__letter,
         button: styles.popup__button,
         buttonid: styles.popup__button,
-        buttontext: styles.popup__buttontext,
         buttontextwin: styles.popup__buttontext_type_win,
         buttontextlose: styles.popup__buttontext_type_lose,
     };

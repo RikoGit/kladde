@@ -1,3 +1,11 @@
+.root {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    transform-style: preserve-3d;
+    transition: 0.5s;
+    transform: rotate3d(0, 1, 0, 180deg);
+}
 .card__face {
     content: '';
     position: absolute;
@@ -32,15 +40,7 @@
     cursor: pointer;
     z-index: 1;
 }
-.card {
-    position: relative;
-    width: 130px;
-    height: 130px;
-    transform-style: preserve-3d;
-    transition: 0.5s;
-    transform: rotate3d(0, 1, 0, 180deg);
-}
-.card.card_state_close {
+.root.card_state_close {
     transform: rotate3d(0, 1, 0, -0deg);
 }
 .card_state_open .card__back,

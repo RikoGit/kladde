@@ -28,8 +28,8 @@ export default class Popup {
                     </span>
                 </h1>
                 <div class="${styles.button}">
-                    <span class="${styles.button_text} ${styles.button_text_win}">Play again</span>
-                    <span class="${styles.button_text} ${styles.button_text_lose}">Try again</span>
+                    <span class="${styles.button_text_win}">Play again</span>
+                    <span class="${styles.button_text_lose}">Try again</span>
                 </div>
             </div>`;
     }
