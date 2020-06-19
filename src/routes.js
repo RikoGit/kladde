@@ -1,4 +1,4 @@
-export default [
+const routes = [
     { path: '', title: 'Главная' },
     { path: 'mult', title: 'Мультик' },
     { path: 'harvest', title: 'Бабуленькин урожай' },
@@ -12,3 +12,13 @@ export default [
     { path: 'todo', title: 'TODO' },
     { path: 'memegenerator', title: 'Meme generator' },
 ];
+
+export const routesForMapping = [...routes];
+const emptyPathIndex = routesForMapping.findIndex(({ path }) => path === '');
+
+if (emptyPathIndex !== -1) {
+    const [emptyPathRoute] = routesForMapping.splice(emptyPathIndex, 1);
+    routesForMapping.push(emptyPathRoute);
+}
+
+export default routes;
