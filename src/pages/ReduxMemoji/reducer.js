@@ -1,26 +1,44 @@
-import { CARD_CLICK, SET_CLOSING, TICK, SET_READY_TO_PLAY } from './actions.js';
-import { CARD_STATE, GAME_STATE, TIMEOUT_IN_SECONDS } from './constants.js';
+import {
+    SET_CARDS_STATE,
+    SET_CLOSING,
+    SET_PLAY,
+    SET_READY_TO_PLAY,
+    SET_WIN,
+    TIMER_TICK,
+} from './actions.js';
+import { CARD_STATE, GAME_STATE, TIMEOUT_IN_SECONDS, TIMER_STATE } from './constants.js';
+import { closeDifferentCards, setStateForPairOfCards } from './utils.js';
 
 export default (state, { type, payload }) => {
     switch (type) {
-        case CARD_CLICK: {
-            const card = state.cards[payload];
-            let gameState = state.state;
+        case SET_PLAY: {
+            const timer = {
+                ...state.timer,
+                timeLeft: TIMEOUT_IN_SECONDS,
+                state: TIMER_STATE.PLAY,
+                timerId: payload,
+            };
 
-            if (card.state !== CARD_STATE.CLOSE) {
-                return state;
-            }
-            if (state.state !== GAME_STATE.READY_TO_PLAY && state.state !== GAME_STATE.PLAY) {
-                return state;
-            }
-            if (state.state === GAME_STATE.READY_TO_PLAY) {
-                gameState = GAME_STATE.PLAY;
-                if (state.timer.timerId) {
-                    clearInterval(state.timer.timerId);
-                }
-            }
+            return { ...state, state: GAME_STATE.PLAY, timer };
+        }
 
-            return { state: gameState };
+        case SET_CARDS_STATE: {
+            const cardsWithOpen = state.cards.map((card, index) =>
+                index === payload ? { ...card, state: CARD_STATE.OPEN } : card,
+            );
+            const cards = setStateForPairOfCards(closeDifferentCards(cardsWithOpen));
+
+            return { ...state, cards };
+        }
+
+        case SET_WIN: {
+            const timer = {
+                ...state.timer,
+                state: TIMER_STATE.STOP,
+                timerId: null,
+            };
+
+            return { ...state, state: GAME_STATE.WIN, timer };
         }
 
         case SET_CLOSING: {
@@ -33,8 +51,16 @@ export default (state, { type, payload }) => {
                 timer,
             };
         }
-        case TICK:
-            return state;
+        case TIMER_TICK: {
+            const timer = { ...state.timer };
+            timer.timeLeft -= 1;
+
+            if (timer.timeLeft === 0) {
+                timer.state = TIMER_STATE.STOP;
+            }
+
+            return { ...state, timer };
+        }
 
         case SET_READY_TO_PLAY: {
             const cards = [...state.cards].sort(() => 0.5 - Math.random());
