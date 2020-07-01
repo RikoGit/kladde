@@ -1,4 +1,4 @@
-import { TRANSITION_DURATION, GAME_STATE, CARD_STATE } from './constants.js';
+import { TRANSITION_DURATION, GAME_STATE, CARD_STATE, TICK_DURATION } from './constants.js';
 
 export const SET_CARDS_STATE = 'SET_CARDS_STATE';
 export const SET_CLOSING = 'SET_CLOSING';
@@ -7,9 +7,9 @@ export const SET_READY_TO_PLAY = 'SET_READY_TO_PLAY';
 export const SET_WIN = 'SET_WIN';
 export const TIMER_TICK = 'TIMER_TICK';
 
-export const setCardsState = () => ({ type: SET_CARDS_STATE });
+export const setCardsState = index => ({ type: SET_CARDS_STATE, payload: index });
 export const setClosing = () => ({ type: SET_CLOSING });
-export const setPlay = timerId => ({ type: SET_READY_TO_PLAY, payload: timerId });
+export const setPlay = timerId => ({ type: SET_PLAY, payload: timerId });
 export const setReadyToPlay = () => ({ type: SET_READY_TO_PLAY });
 export const setWin = () => ({ type: SET_WIN });
 export const timerTick = () => ({ type: TIMER_TICK });
@@ -24,7 +24,7 @@ export const tick = () => (dispatch, getState) => {
 };
 
 export const cardClick = index => (dispatch, getState) => {
-    const state = getState();
+    let state = getState();
     const card = state.cards[index];
 
     if (card.state !== CARD_STATE.CLOSE) {
@@ -39,11 +39,12 @@ export const cardClick = index => (dispatch, getState) => {
         }
         const timerId = setInterval(() => {
             dispatch(tick());
-        }, TRANSITION_DURATION);
+        }, TICK_DURATION);
 
         dispatch(setPlay(timerId));
     }
     dispatch(setCardsState(index));
+    state = getState();
     if (state.cards.every(({ state: cardState }) => cardState === CARD_STATE.IDENTICAL)) {
         if (state.timer.timerId) {
             clearInterval(state.timer.timerId);

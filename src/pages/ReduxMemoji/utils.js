@@ -1,7 +1,7 @@
 import { CARD_STATE } from './constants.js';
 
 export const setStateForPairOfCards = cards => {
-    const openCards = cards.filter(card => card.state === 'open');
+    const openCards = cards.filter(card => card.state === CARD_STATE.OPEN);
 
     if (openCards.length !== 2) return cards;
 

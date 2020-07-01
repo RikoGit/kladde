@@ -22,6 +22,7 @@ export default class Timer {
 
         if (this.timeLeft === 0) {
             clearInterval(this.timerId);
+            this.timerId = null;
             this.state = 'stop';
             if (this.onTimerEnd) {
                 this.onTimerEnd();

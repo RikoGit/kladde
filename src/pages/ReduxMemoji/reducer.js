@@ -27,6 +27,7 @@ export default (state, { type, payload }) => {
                 index === payload ? { ...card, state: CARD_STATE.OPEN } : card,
             );
             const cards = setStateForPairOfCards(closeDifferentCards(cardsWithOpen));
+            console.log('state before dispatch: ', { ...state, cards });
 
             return { ...state, cards };
         }
@@ -52,14 +53,17 @@ export default (state, { type, payload }) => {
             };
         }
         case TIMER_TICK: {
+            let gameState = state.state;
             const timer = { ...state.timer };
             timer.timeLeft -= 1;
 
             if (timer.timeLeft === 0) {
                 timer.state = TIMER_STATE.STOP;
+                gameState = GAME_STATE.LOSE;
+                timer.timerId = null;
             }
 
-            return { ...state, timer };
+            return { ...state, timer, state: gameState };
         }
 
         case SET_READY_TO_PLAY: {

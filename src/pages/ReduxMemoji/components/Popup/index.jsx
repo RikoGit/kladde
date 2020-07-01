@@ -4,7 +4,7 @@ import React from 'react';
 import AnimatedWord from './components/AnimatedWord/index.jsx';
 import styles from './styles.css';
 
-const Popup = ({ gameModel, state }) => {
+const Popup = ({ state, onClick }) => {
     const rootClassName = cn(
         styles.root,
         state === 'win' || state === 'lose' ? cn(styles.state_open, styles[`state_${state}`]) : '',
@@ -19,7 +19,7 @@ const Popup = ({ gameModel, state }) => {
                     <AnimatedWord word={word} />
                 </h1>
                 {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
-                <div className={styles.button} onClick={() => gameModel.onPopupClick()}>
+                <div className={styles.button} onClick={onClick}>
                     <span className={styles.button_text}>{buttonText}</span>
                 </div>
             </div>
