@@ -76,5 +76,6 @@
     "bugs": {
         "url": "https://github.com/RikoGit/kladde/issues"
     },
+    "cacheDirectories": [],
     "homepage": "https://github.com/RikoGit/kladde#readme"
 }
