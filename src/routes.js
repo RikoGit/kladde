@@ -9,7 +9,7 @@ const routes = [
     { path: 'commonmodelmemoji', title: 'Memoji (общая модель)' },
     { path: 'memoji', title: 'Memoji (react)' },
     { path: 'reduxmemoji', title: 'Memoji (redux)' },
-    // { path: 'simon', title: 'Simon /в разработке' },
+    { path: 'simon', title: 'Simon /в разработке' },
     { path: 'todo', title: 'TODO' },
     { path: 'memegenerator', title: 'Meme generator' },
 ];
