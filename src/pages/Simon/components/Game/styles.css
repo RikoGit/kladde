@@ -1,0 +1,40 @@
+.game {
+    margin: 0 auto;
+    position: relative;
+    width: 400px;
+    min-height: 400px;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin: 10px;
+    font-weight: bold;
+}
+.round {
+    position: absolute;
+    top: 20px;
+    left: -220px;
+    width: 200px;
+    text-align: center;
+}
+.round__header {
+    margin: 0 0 15px 0;
+    padding: 0;
+    font-size: 100px;
+    color: #ff8f2b;
+    font-family: Courier New, Courier, monospace;
+}
+.start {
+    position: absolute;
+    top: 320px;
+    left: 470px;
+    width: 200px;
+    box-sizing: border-box;
+    font-size: 30px;
+    border-radius: 12px;
+    color: #fff;
+    background: #8f60e6;
+    border: none;
+    padding: 23px;
+    cursor: pointer;
+}

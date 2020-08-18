@@ -8,22 +8,6 @@ import Popup from '../Popup/index.jsx';
 import styles from './styles.css';
 
 const Game = ({ cards, state, timer, dispatchCardClick, dispatchPopupClick }) => {
-    // const initialModelPlainObject = useMemo(() => model.toPlainObject(), []);
-    // const [modelPlainObject, setModelPlainObject] = useState(initialModelPlainObject);
-
-    /* 
-    useEffect(() => {
-        const onChangeHandler = () => {
-            setModelPlainObject(model.toPlainObject());
-        };
-        model.onChange = onChangeHandler;
-        model.cards.forEach(card => {
-            card.onChange = onChangeHandler;
-        });
-        model.timer.onChange = onChangeHandler;
-    }, []);
-    */
-
     const cardsElements = cards.map((card, index) => (
         <Card
             as="li"

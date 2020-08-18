@@ -27,7 +27,6 @@ export default (state, { type, payload }) => {
                 index === payload ? { ...card, state: CARD_STATE.OPEN } : card,
             );
             const cards = setStateForPairOfCards(closeDifferentCards(cardsWithOpen));
-            console.log('state before dispatch: ', { ...state, cards });
 
             return { ...state, cards };
         }
