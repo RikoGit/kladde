@@ -1,15 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { start } from '../../actions.js';
-// import Audio from '../Audio/index.jsx';
+import { start, mouseDownBoxHandler, mouseUpBoxHandler } from '../../actions.js';
 import Boxes from '../Boxes/index.jsx';
 import Modes from '../Modes/index.jsx';
 import styles from './styles.css';
 
-const Game = ({ boxes, round, message, dispatchStart }) => (
+const Game = ({
+    boxes,
+    round,
+    message,
+    dispatchStart,
+    dispatchMouseDownBoxHandler,
+    dispatchMouseUpBoxHandler,
+}) => (
     <div className={styles.game}>
-        <Boxes boxes={boxes} />
+        <Boxes
+            boxes={boxes}
+            dispatchMouseDownBoxHandler={dispatchMouseDownBoxHandler}
+            dispatchMouseUpBoxHandler={dispatchMouseUpBoxHandler}
+        />
         <section className={styles.round}>
             <h2 className={styles.round__header}>{round}</h2>
         </section>
@@ -24,4 +34,6 @@ const mapStateToProps = state => state;
 
 export default connect(mapStateToProps, {
     dispatchStart: start,
+    dispatchMouseDownBoxHandler: mouseDownBoxHandler,
+    dispatchMouseUpBoxHandler: mouseUpBoxHandler,
 })(Game);

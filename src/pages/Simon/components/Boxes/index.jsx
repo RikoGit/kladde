@@ -1,8 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
-import { mouseDownBoxHandler, mouseUpBoxHandler } from '../../actions.js';
+// import { mouseDownBoxHandler, mouseUpBoxHandler } from '../../actions.js';
 // import boxesData from './boxesData.js';
 import styles from './styles.css';
 
@@ -24,9 +24,11 @@ const Boxes = ({ boxes, dispatchMouseDownBoxHandler, dispatchMouseUpBoxHandler }
     </div>
 );
 
-const mapStateToProps = state => state;
+// const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {
-    dispatchMouseDownBoxHandler: mouseDownBoxHandler,
-    dispatchMouseUpBoxHandler: mouseUpBoxHandler,
-})(Boxes);
+export default Boxes;
+
+// export default connect(mapStateToProps, {
+//     dispatchMouseDownBoxHandler: mouseDownBoxHandler,
+//     dispatchMouseUpBoxHandler: mouseUpBoxHandler,
+// })(Boxes);
