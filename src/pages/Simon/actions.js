@@ -3,6 +3,7 @@ export const START_ROUND = 'START_ROUND';
 export const SET_ROUND = 'SET_ROUND';
 export const END = 'END';
 export const SET_SOUND = 'SET_SOUND';
+export const SET_TIMER = 'SET_TIMER';
 export const SET_CLICK_NUMBER_IN_THE_ROUND = 'SET_CLICK_NUMBER_IN_THE_ROUND';
 export const SET_ISACTIVE_BOX = 'SET_ISACTIVE_BOX';
 export const SET_IS_NEED_CLICK_HANDLER = 'SET_IS_NEED_CLICK_HANDLER';
@@ -10,10 +11,11 @@ export const SET_IS_NEED_CLICK_HANDLER = 'SET_IS_NEED_CLICK_HANDLER';
 export const setStartState = () => ({ type: SET_START_STATE });
 export const end = () => ({ type: END });
 export const setSound = sound => ({ type: SET_SOUND, payload: sound });
+export const setTimer = timer => ({ type: SET_TIMER, payload: timer });
 export const setRound = () => ({ type: SET_ROUND });
 export const setClickNumberInTheRound = () => ({ type: SET_CLICK_NUMBER_IN_THE_ROUND });
 export const setIsActiveBox = (id, isActive) => ({
-    type: 'SET_ISACTIVE_BOX',
+    type: SET_ISACTIVE_BOX,
     payload: { id, isActive },
 });
 export const setIsNeedClickHandler = isActive => ({

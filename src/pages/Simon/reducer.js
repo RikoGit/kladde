@@ -2,6 +2,7 @@ import {
     SET_START_STATE,
     END,
     SET_SOUND,
+    SET_TIMER,
     SET_ISACTIVE_BOX,
     SET_ROUND,
     SET_CLICK_NUMBER_IN_THE_ROUND,
@@ -32,6 +33,9 @@ export default (state, { type, payload }) => {
             const sound = payload || '';
 
             return { ...state, sound };
+        }
+        case SET_TIMER: {
+            return { ...state, timer: payload };
         }
         case SET_ROUND: {
             const randomNumber = Math.floor(Math.random() * state.boxes.length);
