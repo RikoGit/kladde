@@ -4,7 +4,11 @@ import styles from './styles.css';
 
 const Audio = ({ sound }) => {
     const audioRef = useRef(null);
-    useEffect(() => sound && audioRef.current.play(), sound);
+    useEffect(() => {
+        if (sound) {
+            audioRef.current.play();
+        }
+    }, [sound]);
 
     return (
         <div className={styles.sound}>
